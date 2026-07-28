@@ -179,6 +179,13 @@ Use the `{漢字|ふりがな}` syntax to add furigana above kanji:
 {他人事|ひとごと}のように{日々|ひび}を{眺|なが}めた。
 ```
 
+<div align="center">
+  <img src="docs/assets/furigana.png" alt="Furigana Display Example" width="60%">
+  <br/>
+  <em>Furigana Display Example</em>
+</div>
+<br/>
+
 The code above will be rendered as text with small annotations above the kanji. Browsers that do not support ruby text will display the reading text inside parentheses as a *fallback*.
 </details>
 
