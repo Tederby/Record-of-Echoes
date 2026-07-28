@@ -1,25 +1,91 @@
-# Terjemahan Lirik — Lyrics Translation
+<div align="center">
+  <img src="docs/assets/banner.png" alt="Lyrics Translation Banner" width="100%">
+  
+  <br />
+  <br />
 
-Situs terjemahan lirik lagu Jepang (Vocaloid & J-Pop) — mendukung multi-bahasa, termasuk Indonesia, English, Romaji, dan bahasa lainnya.
+  <h1>Terjemahan Lirik</h1>
+  <p>
+    <b>Situs terjemahan lirik lagu Jepang (Vocaloid & J-Pop)</b><br/>
+    Mendukung multi-bahasa, termasuk Indonesia, English, Romaji, dan lainnya.
+  </p>
 
-Dibangun dengan Next.js (App Router), konten disimpan sebagai file Markdown di repo — bisa langsung dibaca/di-share via GitHub.
+  <a href="https://nextjs.org/">
+    <img src="https://img.shields.io/badge/Next.js-16-black?style=for-the-badge&logo=next.js" alt="Next.js" />
+  </a>
+  <a href="https://tailwindcss.com/">
+    <img src="https://img.shields.io/badge/Tailwind_CSS-v4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
+  </a>
+  <a href="https://www.typescriptlang.org/">
+    <img src="https://img.shields.io/badge/TypeScript-5-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
+  </a>
+  <a href="https://vercel.com/">
+    <img src="https://img.shields.io/badge/Deployed_on-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Vercel" />
+  </a>
+</div>
 
-## Fitur
+<br />
 
-- **Multi-bahasa fleksibel** — Sistem bahasa dinamis; setiap file `.md` di folder lagu otomatis terdeteksi sebagai bahasa baru (bukan hanya 4 bahasa hardcoded)
-- **Side-by-side mode** — Bandingkan dua bahasa secara berdampingan dengan tampilan yang lebih luas
-- **Dropdown language selector** — Pilih bahasa via dropdown menu (mendukung jumlah bahasa tak terbatas)
-- **Fuzzy search** — Cari berdasarkan judul, artis, vocalist, producer, tag, bahkan isi lirik — tidak harus exact match
-- **YouTube embed** — Video YouTube otomatis di-embed langsung di halaman lagu
-- **Markdown rendering** — Lirik dirender sebagai markdown terformat (bold, italic, dll.)
-- **Furigana support** — Syntax `{漢字|ふりがな}` untuk menampilkan reading di atas kanji
-- **Tags** — Filter lagu berdasarkan tag (vocaloid, j-pop, ballad, dll.)
-- **Copy lyrics** — Copy lirik ke clipboard dengan satu klik
-- **Keyboard shortcuts** — `1–9` untuk ganti bahasa, `S` untuk toggle side-by-side
-- **Language badges** — Badge bahasa tersedia di setiap card lagu di homepage
-- **Stats counter** — Statistik total lagu, artis, dan tag di homepage
-- **Markdown-based** — Semua lirik tersimpan sebagai `.md` file, readable langsung di GitHub
-- **Static Site** — Di-generate saat build time, no database, no CMS
+Dibangun dengan Next.js (App Router), konten disimpan sebagai file Markdown di dalam repositori — bisa langsung dibaca dan dibagikan melalui GitHub.
+
+---
+
+## Daftar Isi
+- [Tangkapan Layar](#tangkapan-layar)
+- [Fitur Utama](#fitur-utama)
+- [Tech Stack](#tech-stack)
+- [Struktur Konten](#struktur-konten)
+- [Memulai Development](#memulai-development)
+- [Menambah Terjemahan Baru](#menambah-terjemahan-baru)
+- [Rute Aplikasi](#rute-aplikasi)
+- [Disclaimer](#disclaimer)
+
+---
+
+## Tangkapan Layar
+
+<div align="center">
+  <img src="docs/assets/mockup-home.png.jpeg" alt="Halaman Utama" width="80%">
+  <br/>
+  <em>Tampilan Halaman Utama (Daftar Lagu & Statistik)</em>
+  <br/><br/>
+  <img src="docs/assets/mockup-lyrics.png.jpeg" alt="Mode Lirik Berdampingan" width="80%">
+  <br/>
+  <em>Tampilan Side-by-Side Mode untuk Terjemahan Lirik</em>
+</div>
+
+---
+
+## Fitur Utama
+
+**Multi-bahasa Fleksibel**
+> Sistem bahasa dinamis; setiap file `.md` di folder lagu otomatis terdeteksi sebagai bahasa baru (tidak terbatas pada bahasa yang di-hardcode).
+
+**Side-by-side Mode**
+> Bandingkan dua bahasa secara berdampingan dengan tampilan layar yang lebih luas.
+
+**Dropdown Language Selector**
+> Pilih bahasa via dropdown menu (mendukung jumlah bahasa tak terbatas).
+
+**Fuzzy Search**
+> Pencarian cerdas berdasarkan judul, artis, vokalis, produser, tag, bahkan cuplikan isi lirik — tidak harus exact match.
+
+**YouTube Embed**
+> Video YouTube otomatis di-embed langsung di halaman lagu.
+
+**Markdown Rendering**
+> Lirik dirender sebagai markdown terformat (tebal, miring, dll).
+
+**Furigana Support**
+> Mendukung sintaks `{漢字|ふりがな}` untuk menampilkan anotasi cara baca di atas huruf kanji.
+
+**Tags & Stats Counter**
+> Filter lagu berdasarkan tag (vocaloid, j-pop, ballad, dll) serta statistik total lagu, artis, dan tag di halaman utama.
+
+**Keyboard Shortcuts**
+> Tekan `1–9` untuk mengganti bahasa, `S` untuk toggle side-by-side mode.
+
+---
 
 ## Tech Stack
 
@@ -30,11 +96,13 @@ Dibangun dengan Next.js (App Router), konten disimpan sebagai file Markdown di r
 - **Rendering**: Static Site Generation (SSG) via `generateStaticParams`
 - **Deploy**: Vercel
 
+---
+
 ## Struktur Konten
 
 Lirik disimpan di folder `lyrics/` dengan struktur:
 
-```
+```text
 lyrics/
   Artist_Name/
     Album_Name/              ← opsional, hanya jika lagu punya album
@@ -61,9 +129,11 @@ Metadata (title, artist, tags, dll.) diambil dari file dengan prioritas:
 4. `english.md`
 5. File `.md` lainnya (urutan alfabet)
 
-Jika file prioritas tertinggi sudah memiliki metadata, metadata dari file lain **tidak akan diambil**. Jika metadata tidak lengkap (bahkan tidak ada judul/artis), sistem akan fallback ke nama folder sebagai judul dan nama artis.
+Jika file prioritas tertinggi sudah memiliki metadata, sistem tidak akan mengambil metadata dari file lain. Jika tidak ada metadata sama sekali, sistem akan melakukan *fallback* menggunakan nama folder sebagai judul dan artis.
 
-### Format File Markdown
+<details>
+<summary><b>Klik untuk melihat Format File Markdown</b></summary>
+<br/>
 
 ```markdown
 ---
@@ -95,8 +165,11 @@ Baris baru dipertahankan.
 
 Furigana: {事切|ことき}れて、またね。
 ```
+</details>
 
-### Furigana (Ruby Text)
+<details>
+<summary><b>Klik untuk melihat Penjelasan Furigana (Ruby Text)</b></summary>
+<br/>
 
 Gunakan syntax `{漢字|ふりがな}` untuk menambahkan furigana di atas kanji:
 
@@ -106,9 +179,12 @@ Gunakan syntax `{漢字|ふりがな}` untuk menambahkan furigana di atas kanji:
 {他人事|ひとごと}のように{日々|ひび}を{眺|なが}めた。
 ```
 
-Akan dirender sebagai teks dengan annotation kecil di atas kanji. Browser yang tidak support ruby text akan menampilkan reading dalam tanda kurung sebagai fallback.
+Kode di atas akan dirender sebagai teks dengan anotasi kecil di atas kanji. Browser yang tidak mendukung ruby text akan menampilkan teks bacaan di dalam tanda kurung sebagai *fallback*.
+</details>
 
-### Tabel Metadata
+<details>
+<summary><b>Klik untuk melihat Tabel Lengkap Metadata</b></summary>
+<br/>
 
 | Field | Status | Deskripsi |
 |---|---|---|
@@ -129,14 +205,13 @@ Akan dirender sebagai teks dengan annotation kecil di atas kanji. Browser yang t
 | `source_url` | Opsional | URL sumber (YouTube, NicoNico, dll.) — YouTube otomatis di-embed |
 | `translated_date` | Opsional | Tanggal diterjemahkan (YYYY-MM-DD) |
 
-## Getting Started
+</details>
 
-### Prerequisites
+---
 
-- Node.js 18+
-- npm
+## Memulai Development
 
-### Development
+**Prerequisites:** Node.js 18+ dan npm
 
 ```bash
 # Install dependencies
@@ -148,24 +223,25 @@ npm run dev
 
 Buka [http://localhost:3000](http://localhost:3000) di browser.
 
-### Build
-
+**Build for Production:**
 ```bash
 npm run build
 ```
 
+---
+
 ## Menambah Terjemahan Baru
 
-1. Buat folder di `lyrics/Nama_Artis/Judul_Lagu/` (atau `lyrics/Nama_Artis/Nama_Album/Judul_Lagu/` jika ada album)
-2. Tambah minimal satu file `.md` (e.g. `original.md`, `indonesia.md`) dengan YAML frontmatter
-3. Opsional: tambah file bahasa lain — nama file akan menjadi label bahasa
-4. Push ke GitHub → Vercel rebuild otomatis
+1. Buat folder di `lyrics/Nama_Artis/Judul_Lagu/` (atau tambahkan `Nama_Album` jika relevan).
+2. Buat minimal satu file `.md` (misalnya `original.md`, `indonesia.md`) dengan format YAML frontmatter.
+3. (Opsional) Tambahkan file bahasa lain — nama file otomatis akan menjadi label bahasa di situs.
+4. Push ke GitHub, dan Vercel akan otomatis melakukan *rebuild*.
 
 ### Menambah Bahasa Baru
 
-Cukup buat file `.md` baru di folder lagu dengan nama bahasa yang diinginkan:
+Cukup buat file `.md` baru di folder lagu dengan nama bahasa yang diinginkan. Sistem kami akan mendeteksinya secara dinamis:
 
-```
+```text
 lyrics/Artis/Lagu/
   original.md      → label: "原文"
   romaji.md        → label: "Romaji"
@@ -175,7 +251,9 @@ lyrics/Artis/Lagu/
   spanish.md       → label: "Spanish"    ← otomatis terdeteksi!
 ```
 
-## Routes
+---
+
+## Rute Aplikasi
 
 | Route | Deskripsi |
 |---|---|
@@ -188,13 +266,8 @@ lyrics/Artis/Lagu/
 | `/artists` | Daftar semua artis |
 | `/about` | Tentang situs ini |
 
-## Keyboard Shortcuts (Song Detail Page)
-
-| Key | Aksi |
-|---|---|
-| `1` – `9` | Switch ke bahasa ke-N |
-| `S` | Toggle side-by-side mode |
+---
 
 ## Disclaimer
 
-Semua lirik asli, musik, dan karya seni adalah milik artis, produser, dan pemegang hak cipta masing-masing. Terjemahan di sini bersifat personal dan non-komersial, dibuat untuk tujuan apresiasi budaya dan edukasi.
+Semua lirik asli, musik, dan karya seni adalah milik artis, produser, dan pemegang hak cipta masing-masing. Terjemahan di sini bersifat personal dan non-komersial, dibuat semata-mata untuk tujuan apresiasi budaya dan edukasi.
