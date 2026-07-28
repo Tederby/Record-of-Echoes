@@ -1,2 +1,2 @@
-# Dokumentasi dan Aset
-Folder ini digunakan untuk menyimpan aset-aset dokumentasi seperti gambar, logo, dan screenshot untuk README.
+# Documentation and Assets
+This folder is used to store documentation assets such as images, logos, and screenshots for the README.

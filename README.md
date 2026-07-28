@@ -4,10 +4,10 @@
   <br />
   <br />
 
-  <h1>Terjemahan Lirik</h1>
+  <h1>Lyrics Translation</h1>
   <p>
-    <b>Situs terjemahan lirik lagu Jepang (Vocaloid & J-Pop)</b><br/>
-    Mendukung multi-bahasa, termasuk Indonesia, English, Romaji, dan lainnya.
+    <b>Japanese Song Lyrics Translation Website (Vocaloid & J-Pop)</b><br/>
+    Currently focusing on Indonesian translations, but supports multi-language including English, Romaji, and more.
   </p>
 
   <a href="https://nextjs.org/">
@@ -26,64 +26,64 @@
 
 <br />
 
-Dibangun dengan Next.js (App Router), konten disimpan sebagai file Markdown di dalam repositori — bisa langsung dibaca dan dibagikan melalui GitHub.
+Built with Next.js (App Router). Content is stored as Markdown files inside the repository — it can be directly read and shared via GitHub.
 
 ---
 
-## Daftar Isi
-- [Tangkapan Layar](#tangkapan-layar)
-- [Fitur Utama](#fitur-utama)
+## Table of Contents
+- [Screenshots](#screenshots)
+- [Key Features](#key-features)
 - [Tech Stack](#tech-stack)
-- [Struktur Konten](#struktur-konten)
-- [Memulai Development](#memulai-development)
-- [Menambah Terjemahan Baru](#menambah-terjemahan-baru)
-- [Rute Aplikasi](#rute-aplikasi)
+- [Content Structure](#content-structure)
+- [Getting Started](#getting-started)
+- [Adding New Translations](#adding-new-translations)
+- [Application Routes](#application-routes)
 - [Disclaimer](#disclaimer)
 
 ---
 
-## Tangkapan Layar
+## Screenshots
 
 <div align="center">
-  <img src="docs/assets/mockup-home.png.jpeg" alt="Halaman Utama" width="80%">
+  <img src="docs/assets/mockup-home.png.jpeg" alt="Homepage" width="80%">
   <br/>
-  <em>Tampilan Halaman Utama (Daftar Lagu & Statistik)</em>
+  <em>Homepage View (Song List & Statistics)</em>
   <br/><br/>
-  <img src="docs/assets/mockup-lyrics.png.jpeg" alt="Mode Lirik Berdampingan" width="80%">
+  <img src="docs/assets/mockup-lyrics.png.jpeg" alt="Side-by-Side Lyrics Mode" width="80%">
   <br/>
-  <em>Tampilan Side-by-Side Mode untuk Terjemahan Lirik</em>
+  <em>Side-by-Side Mode View for Lyrics Translation</em>
 </div>
 
 ---
 
-## Fitur Utama
+## Key Features
 
-**Multi-bahasa Fleksibel**
-> Sistem bahasa dinamis; setiap file `.md` di folder lagu otomatis terdeteksi sebagai bahasa baru (tidak terbatas pada bahasa yang di-hardcode).
+**Flexible Multi-language**
+> Dynamic language system; every `.md` file in the song folder is automatically detected as a new language (not limited to hardcoded languages).
 
 **Side-by-side Mode**
-> Bandingkan dua bahasa secara berdampingan dengan tampilan layar yang lebih luas.
+> Compare two languages side by side with a wider screen layout.
 
 **Dropdown Language Selector**
-> Pilih bahasa via dropdown menu (mendukung jumlah bahasa tak terbatas).
+> Select languages via a dropdown menu (supports an unlimited number of languages).
 
 **Fuzzy Search**
-> Pencarian cerdas berdasarkan judul, artis, vokalis, produser, tag, bahkan cuplikan isi lirik — tidak harus exact match.
+> Smart search based on title, artist, vocalist, producer, tags, and even lyrics snippets — exact matches are not required.
 
 **YouTube Embed**
-> Video YouTube otomatis di-embed langsung di halaman lagu.
+> YouTube videos are automatically embedded directly on the song page.
 
 **Markdown Rendering**
-> Lirik dirender sebagai markdown terformat (tebal, miring, dll).
+> Lyrics are rendered as formatted markdown (bold, italic, etc).
 
 **Furigana Support**
-> Mendukung sintaks `{漢字|ふりがな}` untuk menampilkan anotasi cara baca di atas huruf kanji.
+> Supports `{漢字|ふりがな}` syntax to display reading annotations above kanji characters.
 
 **Tags & Stats Counter**
-> Filter lagu berdasarkan tag (vocaloid, j-pop, ballad, dll) serta statistik total lagu, artis, dan tag di halaman utama.
+> Filter songs by tags (vocaloid, j-pop, ballad, etc) and view statistics for total songs, artists, and tags on the homepage.
 
 **Keyboard Shortcuts**
-> Tekan `1–9` untuk mengganti bahasa, `S` untuk toggle side-by-side mode.
+> Press `1–9` to switch languages, `S` to toggle side-by-side mode.
 
 ---
 
@@ -98,80 +98,80 @@ Dibangun dengan Next.js (App Router), konten disimpan sebagai file Markdown di d
 
 ---
 
-## Struktur Konten
+## Content Structure
 
-Lirik disimpan di folder `lyrics/` dengan struktur:
+Lyrics are stored in the `lyrics/` folder with the following structure:
 
 ```text
 lyrics/
   Artist_Name/
-    Album_Name/              ← opsional, hanya jika lagu punya album
+    Album_Name/              ← optional, only if the song belongs to an album
       Song_Title/
-        original.md          ← sumber metadata utama (prioritas tertinggi)
-        romaji.md            ← opsional
-        indonesia.md         ← opsional
-        english.md           ← opsional
-        [bahasa_lain].md     ← opsional, otomatis terdeteksi
-    Song_Title_Tanpa_Album/
+        original.md          ← primary metadata source (highest priority)
+        romaji.md            ← optional
+        indonesia.md         ← optional
+        english.md           ← optional
+        [other_language].md  ← optional, automatically detected
+    Song_Title_Without_Album/
       original.md
       ...
 ```
 
-> **Catatan:** Minimal satu file `.md` harus ada di folder lagu agar dianggap valid. Tidak wajib `indonesia.md` atau bahasa tertentu.
+> **Note:** At least one `.md` file must exist in the song folder to be considered valid. Specific languages like `indonesia.md` or `english.md` are not mandatory.
 
-### Prioritas Metadata
+### Metadata Priority
 
-Metadata (title, artist, tags, dll.) diambil dari file dengan prioritas:
+Metadata (title, artist, tags, etc.) is extracted from files with the following priority:
 
 1. `original.md`
 2. `romaji.md`
 3. `indonesia.md`
 4. `english.md`
-5. File `.md` lainnya (urutan alfabet)
+5. Other `.md` files (alphabetical order)
 
-Jika file prioritas tertinggi sudah memiliki metadata, sistem tidak akan mengambil metadata dari file lain. Jika tidak ada metadata sama sekali, sistem akan melakukan *fallback* menggunakan nama folder sebagai judul dan artis.
+If the highest-priority file already has metadata, the system will not fetch metadata from other files. If no metadata exists at all, the system will fallback to using the folder names as the title and artist.
 
 <details>
-<summary><b>Klik untuk melihat Format File Markdown</b></summary>
+<summary><b>Click to see Markdown File Format</b></summary>
 <br/>
 
 ```markdown
 ---
-# === Field Wajib ===
-title: "Judul Lagu"
-artist: "Nama Artis"
-tags: ["vocaloid", "melankolis", "hatsune-miku"]
+# === Required Fields ===
+title: "Song Title"
+artist: "Artist Name"
+tags: ["vocaloid", "melancholy", "hatsune-miku"]
 
-# === Field Opsional ===
+# === Optional Fields ===
 title_original: "曲のタイトル"
 title_romaji: "Kyoku no Taitoru"
-album: "Nama Album"
+album: "Album Name"
 vocalist: "Hatsune Miku"
-producer: "Nama Producer"
-lyricist: "Nama Penulis Lirik"
-arranger: "Nama Arranger"
-illustrator: "Nama Illustrator MV"
+producer: "Producer Name"
+lyricist: "Lyricist Name"
+arranger: "Arranger Name"
+illustrator: "MV Illustrator Name"
 original_language: "ja"
 release_date: "2024-01-01"
-translator_note: "Terjemahan bebas, bukan literal"
+translator_note: "Loose translation, not literal"
 source_url: "https://youtube.com/..."
 translated_date: "2026-07-22"
 ---
 
-Isi lirik di sini, **mendukung markdown formatting**.
+Lyrics content goes here, **supports markdown formatting**.
 
-Baris baru dipertahankan.
-*Italic* dan **bold** dirender.
+Newlines are preserved.
+*Italic* and **bold** are rendered.
 
 Furigana: {事切|ことき}れて、またね。
 ```
 </details>
 
 <details>
-<summary><b>Klik untuk melihat Penjelasan Furigana (Ruby Text)</b></summary>
+<summary><b>Click to see Furigana (Ruby Text) Explanation</b></summary>
 <br/>
 
-Gunakan syntax `{漢字|ふりがな}` untuk menambahkan furigana di atas kanji:
+Use the `{漢字|ふりがな}` syntax to add furigana above kanji:
 
 ```markdown
 {事切|ことき}れて、またね。
@@ -179,49 +179,49 @@ Gunakan syntax `{漢字|ふりがな}` untuk menambahkan furigana di atas kanji:
 {他人事|ひとごと}のように{日々|ひび}を{眺|なが}めた。
 ```
 
-Kode di atas akan dirender sebagai teks dengan anotasi kecil di atas kanji. Browser yang tidak mendukung ruby text akan menampilkan teks bacaan di dalam tanda kurung sebagai *fallback*.
+The code above will be rendered as text with small annotations above the kanji. Browsers that do not support ruby text will display the reading text inside parentheses as a *fallback*.
 </details>
 
 <details>
-<summary><b>Klik untuk melihat Tabel Lengkap Metadata</b></summary>
+<summary><b>Click to see Full Metadata Table</b></summary>
 <br/>
 
-| Field | Status | Deskripsi |
+| Field | Status | Description |
 |---|---|---|
-| `title` | **Wajib** | Judul lagu (versi display/translated) |
-| `artist` | **Wajib** | Nama artis/circle |
-| `tags` | **Wajib** | Array tag untuk kategorisasi |
-| `title_original` | Opsional | Judul dalam bahasa asli (e.g. Jepang) |
-| `title_romaji` | Opsional | Judul dalam romaji (transliterasi Latin) |
-| `album` | Opsional | Nama album |
-| `vocalist` | Opsional | Nama vocalist (e.g. "Hatsune Miku") |
-| `producer` | Opsional | Nama producer/composer |
-| `lyricist` | Opsional | Penulis lirik (jika berbeda dari producer) |
-| `arranger` | Opsional | Arranger/penata musik |
-| `illustrator` | Opsional | Illustrator MV/cover |
-| `original_language` | Opsional | Bahasa asli lagu (default: "ja") |
-| `release_date` | Opsional | Tanggal rilis lagu (YYYY-MM-DD) |
-| `translator_note` | Opsional | Catatan penerjemah |
-| `source_url` | Opsional | URL sumber (YouTube, NicoNico, dll.) — YouTube otomatis di-embed |
-| `translated_date` | Opsional | Tanggal diterjemahkan (YYYY-MM-DD) |
+| `title` | **Required** | Song title (display/translated version) |
+| `artist` | **Required** | Artist/circle name |
+| `tags` | **Required** | Array of tags for categorization |
+| `title_original` | Optional | Title in the original language (e.g. Japanese) |
+| `title_romaji` | Optional | Title in romaji (Latin transliteration) |
+| `album` | Optional | Album name |
+| `vocalist` | Optional | Vocalist name (e.g. "Hatsune Miku") |
+| `producer` | Optional | Producer/composer name |
+| `lyricist` | Optional | Lyricist (if different from producer) |
+| `arranger` | Optional | Music arranger |
+| `illustrator` | Optional | MV/cover illustrator |
+| `original_language` | Optional | Original language of the song (default: "ja") |
+| `release_date` | Optional | Song release date (YYYY-MM-DD) |
+| `translator_note` | Optional | Translator's notes |
+| `source_url` | Optional | Source URL (YouTube, NicoNico, etc.) — YouTube is auto-embedded |
+| `translated_date` | Optional | Translation date (YYYY-MM-DD) |
 
 </details>
 
 ---
 
-## Memulai Development
+## Getting Started
 
-**Prerequisites:** Node.js 18+ dan npm
+**Prerequisites:** Node.js 18+ and npm
 
 ```bash
 # Install dependencies
 npm install
 
-# Jalankan development server
+# Run development server
 npm run dev
 ```
 
-Buka [http://localhost:3000](http://localhost:3000) di browser.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 **Build for Production:**
 ```bash
@@ -230,44 +230,44 @@ npm run build
 
 ---
 
-## Menambah Terjemahan Baru
+## Adding New Translations
 
-1. Buat folder di `lyrics/Nama_Artis/Judul_Lagu/` (atau tambahkan `Nama_Album` jika relevan).
-2. Buat minimal satu file `.md` (misalnya `original.md`, `indonesia.md`) dengan format YAML frontmatter.
-3. (Opsional) Tambahkan file bahasa lain — nama file otomatis akan menjadi label bahasa di situs.
-4. Push ke GitHub, dan Vercel akan otomatis melakukan *rebuild*.
+1. Create a folder in `lyrics/Artist_Name/Song_Title/` (or add `Album_Name` if relevant).
+2. Create at least one `.md` file (e.g. `original.md`, `indonesia.md` or `english.md`) with YAML frontmatter format.
+3. (Optional) Add other language files — the file name will automatically become the language label on the site.
+4. Push to GitHub, and Vercel will automatically trigger a *rebuild*.
 
-### Menambah Bahasa Baru
+### Adding New Languages
 
-Cukup buat file `.md` baru di folder lagu dengan nama bahasa yang diinginkan. Sistem kami akan mendeteksinya secara dinamis:
+Simply create a new `.md` file in the song folder with the desired language name. Our system will dynamically detect it:
 
 ```text
-lyrics/Artis/Lagu/
+lyrics/Artist/Song/
   original.md      → label: "原文"
   romaji.md        → label: "Romaji"
   indonesia.md     → label: "Indonesia"
   english.md       → label: "English"
-  korean.md        → label: "Korean"     ← otomatis terdeteksi!
-  spanish.md       → label: "Spanish"    ← otomatis terdeteksi!
+  korean.md        → label: "Korean"     ← automatically detected!
+  spanish.md       → label: "Spanish"    ← automatically detected!
 ```
 
 ---
 
-## Rute Aplikasi
+## Application Routes
 
-| Route | Deskripsi |
+| Route | Description |
 |---|---|
-| `/` | Homepage — daftar semua lagu, search filter, stats |
-| `/[artist]` | Halaman artis — semua lagu dari artis tertentu |
-| `/[artist]/[song]` | Detail lagu (tanpa album) |
-| `/[artist]/[album]/[song]` | Detail lagu (dengan album) |
-| `/tags` | Daftar semua tag |
-| `/tags/[tag]` | Lagu-lagu dengan tag tertentu |
-| `/artists` | Daftar semua artis |
-| `/about` | Tentang situs ini |
+| `/` | Homepage — list of all songs, search filters, stats |
+| `/[artist]` | Artist page — all songs by a specific artist |
+| `/[artist]/[song]` | Song detail (without album) |
+| `/[artist]/[album]/[song]` | Song detail (with album) |
+| `/tags` | List of all tags |
+| `/tags/[tag]` | Songs with a specific tag |
+| `/artists` | List of all artists |
+| `/about` | About this site |
 
 ---
 
 ## Disclaimer
 
-Semua lirik asli, musik, dan karya seni adalah milik artis, produser, dan pemegang hak cipta masing-masing. Terjemahan di sini bersifat personal dan non-komersial, dibuat semata-mata untuk tujuan apresiasi budaya dan edukasi.
+All original lyrics, music, and artwork belong to their respective artists, producers, and copyright holders. The translations here are personal and non-commercial, created solely for cultural appreciation and educational purposes.
