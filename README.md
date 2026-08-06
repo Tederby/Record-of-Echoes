@@ -51,7 +51,7 @@ Built with Next.js (App Router). Content is stored as Markdown files inside the 
   <br/><br/>
   <img src="docs/assets/mockup-lyrics.png.jpeg" alt="Side-by-Side Lyrics Mode" width="80%">
   <br/>
-  <em>Side-by-Side Mode View for Lyrics Translation</em>
+  <em>View for Lyrics Translation</em>
 </div>
 
 ---
