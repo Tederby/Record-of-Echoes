@@ -1,57 +1,57 @@
 ---
-translate_note: '"Payung dan mesin jahit di meja bedah" adalah referensi langsung dari kutipan sastra surealisme terkenal karya Comte de Lautréamont yang menggambarkan keindahan dari pertemuan dua benda yang tak berkaitan di tempat yang tak semestinya.'
+translate_note: '"Payung dan mesin jahit di meja otopsi." adalah referensi langsung dari kutipan sastra surealisme terkenal karya Comte de Lautréamont yang menggambarkan keindahan dari pertemuan dua benda yang tak berkaitan di tempat yang tak semestinya.'
 ---
 
-Ia ada di sana,
-Sebuah pelangi yang membentang.
-Ia ada di sana,
-Rumah terasing yang mengudara.
-Ia ada di sana,
-Pecahan patung gipsum.
+Di sanalah letaknya,
+Bianglala tegak membentang.
+Di sanalah letaknya,
+Rumah yang menyendiri di angkasa.
+Di sanalah letaknya,
+Pecahan gipsum berserakan.
 
-Baru pertama kali berkunjung?
+Baru pertama singgah kemari?
+Di jalanan kaki bianglala.
+Meski tak satu pun sudi kau pahami,
+Tak apa, biarkan saja.
 
-Di jalanan pada kaki pelangi,
-Meski kau tak mengerti apa pun,
-Tak apa, biarkanlah seperti itu.
+Bila kau biarkan dirimu
+Terombang-ambing ringan,
+Perlahan kau 'kan melupa.
 
-Sebab dengan begitu,
-Jika kau terus mengambang dan terbuai,
-Perlahan kau 'kan mampu melupakannya.
+Pesan perpisahan yang ditinggalkan
+Seseorang dengan begitu santunnya.
 
-Seseorang dengan sopannya,
-Telah meninggalkan secarik pesan "selamat tinggal".
+Selamanya,
+'Wonder' yang melayang fana,
+Takkan pernah merayumu masuk.
+Sampai kapan pun jua,
+Hanya sekadar ada.
 
-*Wonder* yang mengambang abadi.
-Ia takkan pernah menggodamu,
-Sampai kapan pun,
-Ia hanya sekadar ada.
+Kukira memang begitu.
+Nyatanya ia bersemayam di sana,
+Entah mengapa hatiku pun lega.
 
-Begitulah pikirku.
-Nyatanya tempat itu benar ada,
-Dan entah mengapa hatiku merasa lega.
-
-Sejak kapan kau ada di sini?
-Apa kau sudah tak bernyawa?
+Sejak kapan kau di sini?
+Apa kau tak lagi bernyawa?
 Kalau begitu,
-Bisakah kau tinggalkan aku sendiri?
+Bisakah biarkan aku sendiri?
 
-Ikan biru di balik selimut.
-Alat makan yang memakai dasi.
-Payung dan mesin jahit di atas meja bedah.
+Ikan biru yang berselimut,
+Perkakas makan yang berdasi,
+Payung dan mesin jahit di meja otopsi.
 
-Sebuah "selamat tinggal" yang merusak siaran televisi.
+Perpisahan yang mengusik layar kaca,
 Sudah saatnya aku pulang.
 
-Sebab dengan begitu,
-Jika kau terus mengambang dan terbuai,
-Perlahan kau 'kan mampu melupakannya.
+Bila kau biarkan dirimu
+Terombang-ambing ringan,
+Perlahan kau 'kan melupa.
 
-Tak sepertimu yang sekadar meninggalkan pesan,
-Diriku ini tidaklah kuat.
+Sebab aku tak setegar dirimu,
+Penulis pesan yang beranjak pergi.
 
-*Goodbye.*
-Aku 'kan kembali lagi, *Wonder*.
-Kau pasti takkan repot-repot menahanku pergi.
-Tanpa pernah berubah,
+Selamat tinggal,
+Aku 'kan singgah lagi, Wonder.
+Toh kau takkan menahanku pergi.
+Tanpa berubah sedikit pun,
 Hanya sekadar ada.
