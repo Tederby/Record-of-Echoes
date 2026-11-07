@@ -4,13 +4,6 @@
   <br />
   <br />
 
-```text
-✦ · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ✦
-  ARCHIVE REF: 1966.REV-99  //  DECLASSIFIED DOSSIER  //  DEPT. OF OCCULT LINGUISTICS
-✦ · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ✦
-```
-
-# ❖ RECORDS OF ECHOES
 ### *The Archive of Decoded Japanese Soundscapes*
 
 <p align="center">
@@ -47,7 +40,7 @@ Translations within this repository prioritize **semantic atmosphere and emotion
 ### ✦ Catalog Ledger View (Homepage)
 > *Broadsheet masthead, declassified ledger statistics, full-color phonograph cards, and dial-controlled pagination.*
 
-![Homepage Screenshot Placeholder](docs/assets/screenshot-home-placeholder.png)
+![Homepage Screenshot Placeholder](docs/assets/mockup-home.png)
 *(Placeholder: Insert screenshot of the homepage broadsheet catalog)*
 
 <br />
@@ -55,7 +48,7 @@ Translations within this repository prioritize **semantic atmosphere and emotion
 ### ✦ Declassified Transcript View (Comparative Lyrics)
 > *Bilingual dual-manuscript comparative view, furigana ruby typography, and phonograph reel-to-reel broadcast player.*
 
-![Lyrics Detail Screenshot Placeholder](docs/assets/screenshot-lyrics-placeholder.png)
+![Lyrics Detail Screenshot Placeholder](docs/assets/mockup-lyrics.png)
 *(Placeholder: Insert screenshot of the song detail comparative lyrics)*
 
 </div>
@@ -78,18 +71,18 @@ Translations within this repository prioritize **semantic atmosphere and emotion
 ## ❖ Technical Architecture
 
 ```text
-┌─────────────────────────────────────────────────────────────┐
-│                   RECORDS OF ECHOES ENGINE                  │
-├───────────────────────┬─────────────────────────────────────┤
-│ Framework             │ Next.js 16.2 (App Router + Turbopack)│
-│ Core Language         │ TypeScript 5                        │
-│ Styling Architecture  │ Tailwind CSS v4 + Pure CSS Art Deco │
+┌───────────────────────────────────────────────────────────────┐
+│                   RECORDS OF ECHOES ENGINE                    │
+├───────────────────────┬───────────────────────────────────────┤
+│ Framework             │ Next.js 16.2 (App Router + Turbopack) │
+│ Core Language         │ TypeScript 5                          │
+│ Styling Architecture  │ Tailwind CSS v4 + Pure CSS Art Deco   │
 │ Typography Engine     │ Cinzel, Cormorant Garamond, Space Mono│
-│ Content Storage       │ Markdown with YAML Frontmatter      │
-│ Parser Pipeline       │ gray-matter, react-markdown, remark │
-│ Compilation Paradigm  │ 100% Static Site Generation (SSG)   │
-│ Production Host       │ Vercel Edge Network                 │
-└───────────────────────┴─────────────────────────────────────┘
+│ Content Storage       │ Markdown with YAML Frontmatter        │
+│ Parser Pipeline       │ gray-matter, react-markdown, remark   │
+│ Compilation Paradigm  │ 100% Static Site Generation (SSG)     │
+│ Production Host       │ Vercel Edge Network                   │
+└───────────────────────┴───────────────────────────────────────┘
 ```
 
 ---
