@@ -81,12 +81,23 @@ export default function SongDetail({ song }: SongDetailProps) {
     { label: "Composer / Artist", value: metadata.artist },
     { label: "Vocalist", value: metadata.vocalist },
     { label: "Producer", value: metadata.producer },
-    { label: "Lyricist", value: metadata.lyricist },
+    { label: "MV Creator", value: metadata.mv },
     { label: "Arranger", value: metadata.arranger },
     { label: "Illustrator", value: metadata.illustrator },
     { label: "Anthology / Album", value: metadata.album },
     { label: "Original Broadcast", value: metadata.release_date },
   ];
+
+  // Dedicated note computation:
+  // - Hidden if in comparative side-by-side mode to avoid confusion.
+  // - Target language note takes precedence and overrides original note.
+  // - Falls back to original note if target language has none.
+  const targetNote = song.languages[activeLanguage]?.frontmatter?.note?.trim();
+  const originalNote = song.languages["original"]?.frontmatter?.note?.trim();
+  const activeNote = sideBySide
+    ? null
+    : targetNote || originalNote || null;
+  const noteLanguage = targetNote ? activeLanguage : "original";
 
   return (
     <article className="space-y-8">
@@ -148,16 +159,6 @@ export default function SongDetail({ song }: SongDetailProps) {
               {metadata.tags.map((tag) => (
                 <TagChip key={tag} tag={tag} />
               ))}
-            </div>
-          )}
-
-          {/* Translator note */}
-          {song.languages[activeLanguage]?.frontmatter?.translator_note && (
-            <div className="mt-5 border-l-2 border-[#C5A059] bg-[#141311] p-3 text-xs italic text-[#E6DEC8]/90">
-              <span className="font-mono font-bold not-italic text-[#C5A059]">
-                TRANSLATOR&apos;S MARGINALIA:{" "}
-              </span>
-              {song.languages[activeLanguage].frontmatter.translator_note}
             </div>
           )}
         </div>
@@ -235,6 +236,53 @@ export default function SongDetail({ song }: SongDetailProps) {
           </div>
         </div>
       </div>
+
+      {/* Dedicated Marginalia / Note Container */}
+      <AnimatePresence>
+        {!sideBySide && activeNote && (
+          <motion.section
+            key={`note-${noteLanguage}-${activeNote}`}
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            aria-label="Translator Marginalia and Dossier Notes"
+            className="relative border border-[#C5A059]/40 bg-[#1C1A17] p-5 sm:p-6"
+          >
+            {/* 4 Corner Diamonds */}
+            <div className="absolute -top-1 -left-1 h-1.5 w-1.5 rotate-45 border border-[#C5A059] bg-[#141311]" />
+            <div className="absolute -top-1 -right-1 h-1.5 w-1.5 rotate-45 border border-[#C5A059] bg-[#141311]" />
+            <div className="absolute -bottom-1 -left-1 h-1.5 w-1.5 rotate-45 border border-[#C5A059] bg-[#141311]" />
+            <div className="absolute -bottom-1 -right-1 h-1.5 w-1.5 rotate-45 border border-[#C5A059] bg-[#141311]" />
+
+            {/* Inset Hairline Rule */}
+            <div className="pointer-events-none absolute inset-1.5 border border-[#C5A059]/15" />
+
+            {/* Header Docket */}
+            <div className="mb-3.5 flex flex-wrap items-center justify-between gap-2 border-b border-[#C5A059]/20 pb-2.5">
+              <div className="flex items-center gap-2">
+                <span className="text-xs text-[#C5A059]">❖</span>
+                <h3 className="font-mono text-xs font-bold uppercase tracking-widest text-[#E6DEC8]">
+                  TRANSLATOR&apos;S MARGINALIA // {getLanguageLabel(noteLanguage)}
+                </h3>
+              </div>
+              <span className="font-mono text-[10px] tracking-widest text-[#8C8273]">
+                CLASSIFIED ARCHIVAL NOTE
+              </span>
+            </div>
+
+            {/* Note Content */}
+            <div className="prose prose-invert max-w-none font-serif text-sm italic text-[#E6DEC8]/95 leading-relaxed">
+              <ReactMarkdown
+                remarkPlugins={[remarkBreaks, remarkGfm]}
+                rehypePlugins={[rehypeRaw]}
+              >
+                {activeNote}
+              </ReactMarkdown>
+            </div>
+          </motion.section>
+        )}
+      </AnimatePresence>
 
       {/* Lyrics Transcripts */}
       <AnimatePresence mode="wait">

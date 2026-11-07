@@ -3,7 +3,7 @@ title: "CH4NGE"
 artist: "Giga"
 tags: ["vocaloid", "giga", "kafu", "q*left", "rolua", "cevio"]
 vocalist: "KAFU"
-lyricst: "q*Left"
+mv: "Hissya (筆者) & Okiku (お菊)"
 illustrator: "Rolua"
 release_date: "2021-12-25"
 source_url: "https://www.youtube.com/watch?v=LbO4pg_LHUI"

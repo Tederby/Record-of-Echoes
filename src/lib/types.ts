@@ -10,12 +10,14 @@ export interface SongFrontmatter {
   vocalist?: string;
   producer?: string;
   release_date?: string;
+  note?: string;
   translator_note?: string;
   source_url?: string;
   translated_date?: string;
 
   // === Optional fields (new) ===
   title_romaji?: string;
+  mv?: string;
   lyricist?: string;
   arranger?: string;
   illustrator?: string;

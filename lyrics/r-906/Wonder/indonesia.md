@@ -1,5 +1,5 @@
 ---
-translate_note: '"Payung dan mesin jahit di meja otopsi." adalah referensi langsung dari kutipan sastra surealisme terkenal karya Comte de Lautréamont yang menggambarkan keindahan dari pertemuan dua benda yang tak berkaitan di tempat yang tak semestinya.'
+note: '"Payung dan mesin jahit di meja otopsi." adalah referensi langsung dari kutipan sastra surealisme terkenal karya Comte de Lautréamont yang menggambarkan keindahan dari pertemuan dua benda yang tak berkaitan di tempat yang tak semestinya.'
 ---
 
 Di sanalah letaknya,

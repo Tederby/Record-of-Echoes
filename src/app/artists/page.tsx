@@ -29,7 +29,7 @@ export default function ArtistsPage() {
                 The <span className="italic text-[#C5A059]">Performers</span> &amp; Authors
               </h1>
               <p className="mt-2 font-serif text-base italic text-[#8C8273]">
-                Registry of composers, vocaloids, synthesizers, and lyricists catalogued in the archives.
+                Registry of composers, vocaloids, synthesizers, and visual creators catalogued in the archives.
               </p>
             </div>
 

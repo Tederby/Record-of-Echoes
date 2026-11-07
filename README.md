@@ -58,7 +58,7 @@ Translations within this repository prioritize **semantic atmosphere and emotion
 - **✦ Phonograph Broadcast Embed**: Automatic YouTube audio-visual player embedded inside an antique brass broadcast frame with reel-to-reel metadata.
 - **✦ Furigana Annotation Engine**: Custom preprocessor interpreting `{漢字|ふりがな}` markup into standard HTML `<ruby>` annotations with typography scaling.
 - **✦ Clockwork Horology Physics**: Pure-CSS 1920s Art Deco framing, rotating corner diamond nodes (`✦`), brass hairline rules, and velvety easing curves (`cubic-bezier(0.22, 1, 0.36, 1)`).
-- **✦ Multi-Token Fuzzy Search**: Real-time dossier query engine filtering by title, original Kanji, producer, lyricist, tags, or lyrical snippets.
+- **✦ Multi-Token Fuzzy Search**: Real-time dossier query engine filtering by title, original Kanji, producer, MV creator, tags, or lyrical snippets.
 - **✦ Configurable Archival Pagination**: Dual-column catalog pagination with live record range counter and adjustable reel sizing (defaulting to 10 records / 5×2 grid).
 - **✦ Control Keys**: Rapid terminal navigation via number hotkeys `[1–9]` to switch dialects and `[S]` to toggle comparative view.
 
@@ -132,12 +132,12 @@ title_romaji: "Kyoku no Taitoru"
 album: "Anthology / Album Title"
 vocalist: "Hatsune Miku"
 producer: "Primary Composer"
-lyricist: "Poet / Lyricist"
+mv: "Music Video Director / Studio"
 arranger: "Sound Arranger"
-illustrator: "MV Artist"
+illustrator: "Key Animator / Illustrator"
 original_language: "ja"
 release_date: "1966-05-14"
-translator_note: "Subjective emotional interpretation; preserves poetic cadence."
+note: "Subjective emotional interpretation; preserves poetic cadence."
 source_url: "https://www.youtube.com/watch?v=..."
 translated_date: "2026-11-07"
 ---
@@ -168,12 +168,12 @@ Furigana reading syntax:
 | `title_romaji` | Optional | Romanized transliteration |
 | `vocalist` | Optional | Performing vocal synthesizer or human singer |
 | `producer` | Optional | Track producer |
-| `lyricist` | Optional | Wordsmith (if distinct from producer) |
+| `mv` | Optional | Music video director / animation creator |
 | `arranger` | Optional | Acoustic / synthesizer arranger |
-| `illustrator` | Optional | MV animator / cover artist |
+| `illustrator` | Optional | Key illustrator / cover artist |
 | `album` | Optional | Parent compilation album |
 | `release_date` | Optional | Original publication date (`YYYY-MM-DD`) |
-| `translator_note` | Optional | Marginalia commentary from the translator |
+| `note` | Optional | Marginalia commentary from the translator |
 | `source_url` | Optional | YouTube master recording link (auto-embeds player) |
 | `translated_date` | Optional | Date translation was registered (`YYYY-MM-DD`) |
 

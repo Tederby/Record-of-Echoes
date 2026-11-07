@@ -5,10 +5,10 @@ tags: ["vocaloid", "deco27", "hatsune-miku", "rock", "vocarock"]
 title_original: "マシュマロ"
 title_romaji: "Mashumaro"
 vocalist: "Hatsune Miku"
+mv: "OTOIRO (Director: Yamato Kitazono)"
 arranger: "DECO*27 & Hayato Yamamoto"
 illustrator: "omutatsu"
 release_date: "2025-10-09"
-translator_note: ""
 source_url: "https://www.youtube.com/watch?v=ZIzEnTdR368"
 translated_date: "2026-07-22"
 ---
