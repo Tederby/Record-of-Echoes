@@ -49,13 +49,17 @@ function normalize(str: string): string {
 interface SongListProps {
   songs: Song[];
   showSearch?: boolean;
+  defaultPageSize?: number;
 }
 
-export default function SongList({ songs, showSearch = true }: SongListProps) {
+export default function SongList({
+  songs,
+  showSearch = true,
+  defaultPageSize = 10,
+}: SongListProps) {
   const [query, setQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-
-  const ITEMS_PER_PAGE = 20;
+  const [pageSize, setPageSize] = useState(defaultPageSize);
 
   const filtered = useMemo(() => {
     const raw = query.trim();
@@ -81,10 +85,20 @@ export default function SongList({ songs, showSearch = true }: SongListProps) {
     setCurrentPage(1);
   };
 
-  const totalPages = Math.max(1, Math.ceil(filtered.length / ITEMS_PER_PAGE));
+  const handlePageSizeChange = (newSize: number) => {
+    setPageSize(newSize);
+    setCurrentPage(1);
+  };
+
+  const totalPages = Math.max(1, Math.ceil(filtered.length / pageSize));
+  const safePage = Math.min(currentPage, totalPages);
+
+  const startIdx = filtered.length === 0 ? 0 : (safePage - 1) * pageSize + 1;
+  const endIdx = Math.min(safePage * pageSize, filtered.length);
+
   const paginated = filtered.slice(
-    (currentPage - 1) * ITEMS_PER_PAGE,
-    currentPage * ITEMS_PER_PAGE
+    (safePage - 1) * pageSize,
+    safePage * pageSize
   );
 
   return (
@@ -139,32 +153,42 @@ export default function SongList({ songs, showSearch = true }: SongListProps) {
             ))}
           </div>
 
-          {totalPages > 1 && (
-            <div className="flex items-center justify-center gap-2 pt-6">
-              <button
-                onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
-                disabled={currentPage === 1}
-                className="inline-flex h-9 w-9 items-center justify-center border border-[#C5A059]/40 bg-[#1C1A17] font-mono text-xs text-[#C5A059] transition-all hover:border-[#C5A059] hover:bg-[#25221E] disabled:pointer-events-none disabled:opacity-30"
-                aria-label="Previous ledger page"
-              >
-                ◀
-              </button>
+          {/* Pagination & Ledger Controls Bar */}
+          <div className="flex flex-col items-center justify-between gap-4 border border-[#C5A059]/40 bg-[#1C1A17] p-3 sm:flex-row sm:px-4">
+            {/* Range Counter */}
+            <div className="font-mono text-xs text-[#8C8273]">
+              <span className="text-[#C5A059]">❖</span> RECORD{" "}
+              <span className="font-bold text-[#E6DEC8]">{startIdx}</span>–
+              <span className="font-bold text-[#E6DEC8]">{endIdx}</span> OF{" "}
+              <span className="font-bold text-[#E6DEC8]">{filtered.length}</span> REELS
+            </div>
 
+            {/* Page Navigation Buttons */}
+            {totalPages > 1 ? (
               <div className="flex items-center gap-1.5 font-mono text-xs">
+                <button
+                  onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+                  disabled={safePage === 1}
+                  className="inline-flex h-8 w-8 items-center justify-center border border-[#C5A059]/40 bg-[#141311] text-[#C5A059] transition-all hover:border-[#C5A059] hover:bg-[#25221E] disabled:pointer-events-none disabled:opacity-25"
+                  aria-label="Previous ledger page"
+                >
+                  ◀
+                </button>
+
                 {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => {
                   if (
                     pageNum === 1 ||
                     pageNum === totalPages ||
-                    (pageNum >= currentPage - 1 && pageNum <= currentPage + 1)
+                    (pageNum >= safePage - 1 && pageNum <= safePage + 1)
                   ) {
                     return (
                       <button
                         key={pageNum}
                         onClick={() => setCurrentPage(pageNum)}
-                        className={`inline-flex h-9 min-w-[2.25rem] items-center justify-center border px-2 font-mono transition-colors ${
-                          currentPage === pageNum
+                        className={`inline-flex h-8 min-w-[2rem] items-center justify-center border px-2 font-mono transition-colors ${
+                          safePage === pageNum
                             ? "border-[#C5A059] bg-[#C5A059] font-bold text-[#141311]"
-                            : "border-[#C5A059]/30 bg-[#1C1A17] text-[#8C8273] hover:border-[#C5A059] hover:text-[#E6DEC8]"
+                            : "border-[#C5A059]/30 bg-[#141311] text-[#8C8273] hover:border-[#C5A059] hover:text-[#E6DEC8]"
                         }`}
                       >
                         {String(pageNum).padStart(2, "0")}
@@ -172,7 +196,7 @@ export default function SongList({ songs, showSearch = true }: SongListProps) {
                     );
                   }
 
-                  if (pageNum === currentPage - 2 || pageNum === currentPage + 2) {
+                  if (pageNum === safePage - 2 || pageNum === safePage + 2) {
                     return (
                       <span key={pageNum} className="px-1 text-[#8C8273]">
                         ···
@@ -182,18 +206,44 @@ export default function SongList({ songs, showSearch = true }: SongListProps) {
 
                   return null;
                 })}
-              </div>
 
-              <button
-                onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
-                disabled={currentPage === totalPages}
-                className="inline-flex h-9 w-9 items-center justify-center border border-[#C5A059]/40 bg-[#1C1A17] font-mono text-xs text-[#C5A059] transition-all hover:border-[#C5A059] hover:bg-[#25221E] disabled:pointer-events-none disabled:opacity-30"
-                aria-label="Next ledger page"
+                <button
+                  onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+                  disabled={safePage === totalPages}
+                  className="inline-flex h-8 w-8 items-center justify-center border border-[#C5A059]/40 bg-[#141311] text-[#C5A059] transition-all hover:border-[#C5A059] hover:bg-[#25221E] disabled:pointer-events-none disabled:opacity-25"
+                  aria-label="Next ledger page"
+                >
+                  ▶
+                </button>
+              </div>
+            ) : (
+              <div className="font-mono text-xs text-[#8C8273]">
+                PAGE <span className="font-bold text-[#E6DEC8]">01</span> OF{" "}
+                <span className="font-bold text-[#E6DEC8]">01</span>
+              </div>
+            )}
+
+            {/* Per-Page Selector */}
+            <div className="flex items-center gap-2 font-mono text-xs">
+              <label
+                htmlFor="reels-per-page"
+                className="text-[10px] uppercase tracking-wider text-[#C5A059]"
               >
-                ▶
-              </button>
+                PER PAGE:
+              </label>
+              <select
+                id="reels-per-page"
+                value={pageSize}
+                onChange={(e) => handlePageSizeChange(Number(e.target.value))}
+                className="border border-[#C5A059]/40 bg-[#141311] px-2 py-1 font-mono text-xs text-[#E6DEC8] transition-colors hover:border-[#C5A059] focus:border-[#C5A059] focus:outline-none"
+              >
+                <option value={6}>6 (3×2)</option>
+                <option value={10}>10 (5×2)</option>
+                <option value={20}>20 (10×2)</option>
+                <option value={50}>50 (25×2)</option>
+              </select>
             </div>
-          )}
+          </div>
         </div>
       )}
     </div>
