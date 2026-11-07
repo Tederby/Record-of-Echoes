@@ -40,12 +40,31 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${cinzel.variable} ${cormorant.variable} ${spaceMono.variable} h-full antialiased`}
+      className={`${cinzel.variable} ${cormorant.variable} ${spaceMono.variable} min-h-screen antialiased`}
     >
-      <body className="flex min-h-full flex-col bg-[#141311] text-[#E6DEC8] selection:bg-[#C5A059]/30 selection:text-[#E6DEC8]">
+      <body className="flex min-h-screen flex-col bg-[#141311] text-[#E6DEC8] selection:bg-[#C5A059]/30 selection:text-[#E6DEC8]">
+        {/* Fixed Ambient Background - seamless across any scroll length */}
+        <div
+          className="pointer-events-none fixed inset-0 -z-10 h-screen w-screen overflow-hidden bg-[#141311]"
+          aria-hidden="true"
+        >
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `
+                radial-gradient(ellipse at 50% 0%, rgba(197, 160, 89, 0.08) 0%, transparent 70%),
+                radial-gradient(circle at 100% 100%, rgba(168, 66, 43, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 0% 100%, rgba(74, 93, 78, 0.04) 0%, transparent 50%)
+              `,
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "cover",
+            }}
+          />
+        </div>
+
         {/* Mandatory Film/Paper Grain Overlay */}
         <svg
-          className="pointer-events-none fixed inset-0 z-50 h-full w-full opacity-[0.04] mix-blend-overlay"
+          className="pointer-events-none fixed inset-0 z-50 h-screen w-screen opacity-[0.035] mix-blend-overlay"
           aria-hidden="true"
         >
           <filter id="archive-grain">

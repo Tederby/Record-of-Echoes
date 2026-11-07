@@ -202,7 +202,7 @@ export default function SongList({ songs, showSearch = true }: SongListProps) {
 
 function SongCard({ song }: { song: Song }) {
   const thumbnail = song.metadata.source_url
-    ? getYouTubeThumbnail(song.metadata.source_url, "mqdefault")
+    ? getYouTubeThumbnail(song.metadata.source_url, "hqdefault")
     : null;
 
   return (
@@ -217,10 +217,10 @@ function SongCard({ song }: { song: Song }) {
       <div className="absolute -bottom-1 -right-1 h-2 w-2 rotate-45 border border-[#C5A059] bg-[#141311] transition-transform duration-500 group-hover:rotate-[135deg] group-hover:bg-[#C5A059]" />
 
       {/* Bookplate Inset Rule */}
-      <div className="pointer-events-none absolute inset-1.5 border border-[#C5A059]/15 transition-colors duration-500 group-hover:border-[#C5A059]/35" />
+      <div className="pointer-events-none absolute inset-1.5 border border-[#C5A059]/20 transition-colors duration-500 group-hover:border-[#C5A059]/45" />
 
-      {/* Background Graphic / Phonograph Reel */}
-      <div className="absolute inset-0 z-0 opacity-25 mix-blend-luminosity transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105 group-hover:opacity-35">
+      {/* Background Graphic / Phonograph Artwork in Full Color */}
+      <div className="absolute inset-0 z-0 opacity-75 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105 group-hover:opacity-95">
         {thumbnail ? (
           <Image
             src={thumbnail}
@@ -237,8 +237,8 @@ function SongCard({ song }: { song: Song }) {
         )}
       </div>
 
-      {/* Dark Umber Gradient Wash */}
-      <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#141311] via-[#1C1A17]/85 to-[#1C1A17]/40" />
+      {/* Scrim Gradient Wash: dark at bottom for typography readability, transparent at top to reveal full thumbnail artwork */}
+      <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#141311] via-[#141311]/75 to-transparent transition-opacity duration-500 group-hover:via-[#141311]/60" />
 
       {/* Top Ledger Metadata */}
       <div className="absolute top-3.5 right-3.5 left-3.5 z-20 flex items-center justify-between font-mono text-[9px] uppercase tracking-[0.2em] text-[#8C8273]">
