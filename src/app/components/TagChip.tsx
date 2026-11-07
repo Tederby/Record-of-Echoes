@@ -5,9 +5,12 @@ export default function TagChip({ tag }: { tag: string }) {
   return (
     <Link
       href={`/tags/${encodeURIComponent(tagToSlug(tag))}`}
-      className="inline-block rounded-full bg-zinc-100 px-2.5 py-0.5 text-xs font-medium text-zinc-700 transition-colors hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-700"
+      className="group inline-flex items-center gap-1.5 border border-[#C5A059]/30 bg-[#1C1A17] px-2 py-0.5 font-mono text-[11px] tracking-wider text-[#E6DEC8]/90 transition-all duration-300 hover:border-[#C5A059] hover:bg-[#25221E] hover:text-[#C5A059]"
     >
-      {tag}
+      <span className="text-[8px] text-[#4A5D4E] transition-colors group-hover:text-[#C5A059]">
+        ◆
+      </span>
+      <span>{tag}</span>
     </Link>
   );
 }

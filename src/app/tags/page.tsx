@@ -1,27 +1,48 @@
 import Link from "next/link";
 import { getAllTagsWithSlugs, getSongsByTag } from "@/lib/lyrics";
-import { Hash } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Tags — Lyrics Translation",
-  description: "Browse song translations by tag",
+  title: "Classifications & Taxonomy // Archival Index — Lyrics Translation",
+  description: "Browse translations by genre, theme, synthesizer, or series.",
 };
 
 export default function TagsIndexPage() {
   const tags = getAllTagsWithSlugs();
 
   return (
-    <div className="mx-auto max-w-5xl px-4 py-10">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 sm:text-4xl">
-          Tags
-        </h1>
-        <p className="mt-2 text-base text-zinc-500 dark:text-zinc-400">
-          Browse translations by genre, mood, or series
-        </p>
+    <div className="mx-auto max-w-5xl px-4 py-8 sm:px-6 sm:py-12">
+      {/* Masthead */}
+      <div className="relative mb-10 border border-[#C5A059]/30 bg-[#1C1A17] p-6 sm:p-8">
+        <div className="absolute -top-1 -left-1 h-2 w-2 rotate-45 border border-[#C5A059] bg-[#141311]" />
+        <div className="absolute -top-1 -right-1 h-2 w-2 rotate-45 border border-[#C5A059] bg-[#141311]" />
+        <div className="absolute -bottom-1 -left-1 h-2 w-2 rotate-45 border border-[#C5A059] bg-[#141311]" />
+        <div className="absolute -bottom-1 -right-1 h-2 w-2 rotate-45 border border-[#C5A059] bg-[#141311]" />
+
+        <div className="border border-[#C5A059]/15 p-4 sm:p-6">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <div className="font-mono text-[10px] tracking-[0.25em] text-[#8C8273]">
+                TAXONOMY DIVISION // SECTION II
+              </div>
+              <h1 className="mt-2 font-serif text-3xl font-bold tracking-wide text-[#E6DEC8] sm:text-4xl">
+                The <span className="italic text-[#C5A059]">Thematic</span> Classifications
+              </h1>
+              <p className="mt-2 font-serif text-base italic text-[#8C8273]">
+                Occult taxonomies, synthesizer models, aesthetic motifs, and thematic indices.
+              </p>
+            </div>
+
+            <div className="self-start sm:self-center">
+              <div className="archive-stamp">
+                CLASSIFIED // {tags.length} MARKS
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
+      {/* Index Tabs Grid */}
       <div className="flex flex-wrap gap-3">
         {tags.map(({ tag, slug }) => {
           const count = getSongsByTag(tag).length;
@@ -29,13 +50,16 @@ export default function TagsIndexPage() {
             <Link
               key={tag}
               href={`/tags/${encodeURIComponent(slug)}`}
-              className="group flex items-center gap-2 rounded-full border border-zinc-200/80 bg-white px-4 py-2 shadow-sm transition-all hover:-translate-y-0.5 hover:border-indigo-300 hover:bg-indigo-50 hover:shadow-md dark:border-zinc-800/80 dark:bg-zinc-900 dark:hover:border-indigo-500/50 dark:hover:bg-indigo-500/10"
+              className="group relative flex items-center gap-2 border border-[#C5A059]/40 bg-[#1C1A17] px-3.5 py-2 font-mono text-xs text-[#E6DEC8] transition-all duration-300 hover:border-[#C5A059] hover:bg-[#25221E] hover:text-[#C5A059]"
             >
-              <Hash className="h-4 w-4 text-zinc-400 transition-colors group-hover:text-indigo-500 dark:text-zinc-500" />
-              <span className="font-medium text-zinc-700 transition-colors group-hover:text-indigo-700 dark:text-zinc-300 dark:group-hover:text-indigo-300">
-                {tag}
+              <div className="absolute -top-0.5 -left-0.5 h-1 w-1 rotate-45 border border-[#C5A059] bg-[#141311] group-hover:bg-[#C5A059]" />
+              <div className="absolute -bottom-0.5 -right-0.5 h-1 w-1 rotate-45 border border-[#C5A059] bg-[#141311] group-hover:bg-[#C5A059]" />
+
+              <span className="text-[10px] text-[#4A5D4E] transition-colors group-hover:text-[#C5A059]">
+                ◆
               </span>
-              <span className="ml-1 rounded-full bg-zinc-100 px-2 py-0.5 text-xs font-semibold text-zinc-500 transition-colors group-hover:bg-indigo-100 group-hover:text-indigo-700 dark:bg-zinc-800 dark:text-zinc-400 dark:group-hover:bg-indigo-500/20 dark:group-hover:text-indigo-300">
+              <span className="tracking-wider uppercase">{tag}</span>
+              <span className="border border-[#C5A059]/30 bg-[#141311] px-1.5 py-0.5 text-[10px] text-[#8C8273] transition-colors group-hover:border-[#C5A059] group-hover:text-[#E6DEC8]">
                 {count}
               </span>
             </Link>

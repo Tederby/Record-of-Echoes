@@ -20,8 +20,8 @@ export async function generateMetadata({
   const result = getSongsByTagSlug(decodeURIComponent(slug));
   const displayTag = result?.tag ?? slug;
   return {
-    title: `"${displayTag}" — Tags — Lyrics Translation`,
-    description: `Songs tagged with "${displayTag}"`,
+    title: `[${displayTag}] // Taxonomy Dossier — Lyrics Translation`,
+    description: `Archival compositions categorized under "${displayTag}"`,
   };
 }
 
@@ -38,20 +38,45 @@ export default async function TagPage({
   }
 
   return (
-    <div className="mx-auto max-w-4xl px-4 py-8">
-      <nav className="mb-4 text-sm text-zinc-500 dark:text-zinc-400">
-        <Link href="/" className="hover:text-zinc-700 dark:hover:text-zinc-200">Home</Link>
-        <span className="mx-2">›</span>
-        <Link href="/tags" className="hover:text-zinc-700 dark:hover:text-zinc-200">Tags</Link>
-        <span className="mx-2">›</span>
-        <span className="text-zinc-900 dark:text-zinc-100">{result.tag}</span>
+    <div className="mx-auto max-w-5xl px-4 py-8 sm:px-6">
+      {/* Breadcrumb */}
+      <nav className="mb-6 flex items-center gap-2 font-mono text-xs tracking-wider text-[#8C8273]">
+        <Link href="/" className="transition-colors hover:text-[#C5A059]">
+          CATALOG
+        </Link>
+        <span className="text-[#C5A059]">◆</span>
+        <Link href="/tags" className="transition-colors hover:text-[#C5A059]">
+          CLASSIFICATIONS
+        </Link>
+        <span className="text-[#C5A059]">◆</span>
+        <span className="text-[#E6DEC8]">{result.tag}</span>
       </nav>
-      <h1 className="mb-2 text-2xl font-bold text-zinc-900 dark:text-zinc-100">
-        Tag: {result.tag}
-      </h1>
-      <p className="mb-6 text-sm text-zinc-500 dark:text-zinc-400">
-        {result.songs.length} song{result.songs.length !== 1 ? "s" : ""}
-      </p>
+
+      {/* Header Dossier */}
+      <div className="relative mb-8 border border-[#C5A059]/40 bg-[#1C1A17] p-6">
+        <div className="absolute -top-1 -left-1 h-2 w-2 rotate-45 border border-[#C5A059] bg-[#141311]" />
+        <div className="absolute -top-1 -right-1 h-2 w-2 rotate-45 border border-[#C5A059] bg-[#141311]" />
+        <div className="absolute -bottom-1 -left-1 h-2 w-2 rotate-45 border border-[#C5A059] bg-[#141311]" />
+        <div className="absolute -bottom-1 -right-1 h-2 w-2 rotate-45 border border-[#C5A059] bg-[#141311]" />
+
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between border border-[#C5A059]/15 p-4 sm:p-5">
+          <div>
+            <div className="font-mono text-[10px] tracking-[0.25em] text-[#8C8273]">
+              TAXONOMY MARK // #{result.tag.toUpperCase()}
+            </div>
+            <h1 className="mt-1 font-serif text-3xl font-bold tracking-wide text-[#E6DEC8]">
+              {result.tag}
+            </h1>
+            <p className="mt-1 font-mono text-xs text-[#C5A059]">
+              {result.songs.length} ARCHIVED REEL{result.songs.length !== 1 ? "S" : ""} FOUND
+            </p>
+          </div>
+          <div className="archive-stamp">
+            INDEXED // VERIFIED
+          </div>
+        </div>
+      </div>
+
       <SongList songs={result.songs} showSearch={false} />
     </div>
   );

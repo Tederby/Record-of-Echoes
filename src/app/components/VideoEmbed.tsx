@@ -11,34 +11,52 @@ export default function VideoEmbed({ url }: VideoEmbedProps) {
 
   if (youtubeId) {
     return (
-      <div className="relative w-full overflow-hidden rounded-lg border border-zinc-200 dark:border-zinc-800"
-        style={{ paddingBottom: "56.25%" /* 16:9 aspect ratio */ }}
-      >
-        <iframe
-          src={`https://www.youtube-nocookie.com/embed/${youtubeId}`}
-          title="YouTube video player"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowFullScreen
-          className="absolute inset-0 h-full w-full"
-          loading="lazy"
-        />
+      <div className="relative border border-[#C5A059]/40 bg-[#1C1A17] p-1.5 sm:p-2">
+        {/* Corner diamonds */}
+        <div className="absolute -top-1 -left-1 h-1.5 w-1.5 rotate-45 border border-[#C5A059] bg-[#141311]" />
+        <div className="absolute -top-1 -right-1 h-1.5 w-1.5 rotate-45 border border-[#C5A059] bg-[#141311]" />
+        <div className="absolute -bottom-1 -left-1 h-1.5 w-1.5 rotate-45 border border-[#C5A059] bg-[#141311]" />
+        <div className="absolute -bottom-1 -right-1 h-1.5 w-1.5 rotate-45 border border-[#C5A059] bg-[#141311]" />
+
+        {/* Dossier classification header bar */}
+        <div className="mb-1.5 flex items-center justify-between border-b border-[#C5A059]/20 pb-1 font-mono text-[9px] uppercase tracking-[0.2em] text-[#8C8273]">
+          <span className="flex items-center gap-1.5 text-[#C5A059]">
+            <span>❖</span> PHONOGRAPH BROADCAST FEED
+          </span>
+          <span>REEL-TO-REEL // NO. 04</span>
+        </div>
+
+        {/* 16:9 Player container */}
+        <div
+          className="relative w-full overflow-hidden border border-[#C5A059]/20 bg-[#141311]"
+          style={{ paddingBottom: "56.25%" }}
+        >
+          <iframe
+            src={`https://www.youtube-nocookie.com/embed/${youtubeId}`}
+            title="Archival Audio-Visual Record"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+            className="absolute inset-0 h-full w-full"
+            loading="lazy"
+          />
+        </div>
       </div>
     );
   }
 
-  // Non-YouTube URL — render as external link
+  // Non-YouTube URL — render as vintage archival plaque
   return (
     <a
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      className="inline-flex items-center gap-1.5 rounded-lg border border-zinc-200 px-4 py-2 text-sm text-blue-600 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:text-blue-400 dark:hover:bg-zinc-800"
+      className="group relative inline-flex items-center gap-2 border border-[#C5A059]/50 bg-[#1C1A17] px-4 py-2 font-mono text-xs tracking-wider text-[#C5A059] transition-all duration-300 hover:border-[#C5A059] hover:bg-[#25221E]"
     >
+      <div className="absolute -top-0.5 -left-0.5 h-1 w-1 rotate-45 border border-[#C5A059] bg-[#141311]" />
+      <div className="absolute -bottom-0.5 -right-0.5 h-1 w-1 rotate-45 border border-[#C5A059] bg-[#141311]" />
       <span>▶</span>
-      <span>Watch source video</span>
-      <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-      </svg>
+      <span>INSPECT EXTERNAL MASTER RECORD</span>
+      <span className="font-serif text-sm">↗</span>
     </a>
   );
 }

@@ -2,14 +2,12 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronUp } from "lucide-react";
 
 export default function BackToTop() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const toggleVisibility = () => {
-      // Tampilkan tombol jika sudah scroll ke bawah lebih dari 300px
       if (window.scrollY > 300) {
         setIsVisible(true);
       } else {
@@ -32,15 +30,25 @@ export default function BackToTop() {
     <AnimatePresence>
       {isVisible && (
         <motion.button
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 20 }}
-          transition={{ duration: 0.2 }}
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.9 }}
+          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
           onClick={scrollToTop}
-          className="fixed bottom-6 right-6 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-indigo-600 p-3 text-white shadow-lg transition-all hover:-translate-y-1 hover:bg-indigo-700 hover:shadow-indigo-500/25 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:focus:ring-offset-zinc-950"
-          aria-label="Back to top"
+          className="group fixed bottom-6 right-6 z-40 flex h-11 w-11 items-center justify-center border border-[#C5A059] bg-[#141311] text-[#C5A059] transition-all duration-500 hover:bg-[#25221E] hover:border-[#C5A059] focus:outline-none"
+          aria-label="Ascend to top of dossier"
+          title="Return to top"
         >
-          <ChevronUp className="h-6 w-6" />
+          {/* Inner inset border */}
+          <div className="absolute inset-0.5 border border-[#C5A059]/30 transition-colors group-hover:border-[#C5A059]/70" />
+          
+          {/* Corner diamond anchor */}
+          <div className="absolute -top-1 -left-1 h-1 w-1 rotate-45 border border-[#C5A059] bg-[#141311] group-hover:bg-[#C5A059]" />
+          <div className="absolute -bottom-1 -right-1 h-1 w-1 rotate-45 border border-[#C5A059] bg-[#141311] group-hover:bg-[#C5A059]" />
+
+          <span className="relative font-serif text-sm font-bold transition-transform duration-500 group-hover:-translate-y-0.5">
+            ▲
+          </span>
         </motion.button>
       )}
     </AnimatePresence>

@@ -1,23 +1,35 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Cinzel, Cormorant_Garamond, Space_Mono } from "next/font/google";
 import Navbar from "./components/Navbar";
 import BackToTop from "./components/BackToTop";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const cinzel = Cinzel({
+  variable: "--font-cinzel",
   subsets: ["latin"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const cormorant = Cormorant_Garamond({
+  variable: "--font-cormorant",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  display: "swap",
+});
+
+const spaceMono = Space_Mono({
+  variable: "--font-mono",
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  style: ["normal", "italic"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Lyrics Translation",
+  title: "Lyrics Translation // Classified Dossier",
   description:
-    "Personal translations of Vocaloid and J-Pop song lyrics.",
+    "Occult archival translation index of Vocaloid and Japanese lyrical compositions.",
 };
 
 export default function RootLayout({
@@ -28,14 +40,55 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${cinzel.variable} ${cormorant.variable} ${spaceMono.variable} h-full antialiased`}
     >
-      <body className="flex min-h-full flex-col bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
+      <body className="flex min-h-full flex-col bg-[#141311] text-[#E6DEC8] selection:bg-[#C5A059]/30 selection:text-[#E6DEC8]">
+        {/* Mandatory Film/Paper Grain Overlay */}
+        <svg
+          className="pointer-events-none fixed inset-0 z-50 h-full w-full opacity-[0.04] mix-blend-overlay"
+          aria-hidden="true"
+        >
+          <filter id="archive-grain">
+            <feTurbulence
+              type="fractalNoise"
+              baseFrequency="0.8"
+              numOctaves={3}
+              stitchTiles="stitch"
+            />
+          </filter>
+          <rect width="100%" height="100%" filter="url(#archive-grain)" />
+        </svg>
+
+        {/* Top classified banner line */}
+        <div className="relative border-b border-[#C5A059]/20 bg-[#1C1A17] py-1 text-center font-mono text-[10px] tracking-[0.25em] text-[#8C8273]">
+          <span className="text-[#C5A059]">✦</span> ARCHIVE REF: 1966.REV-99 // RESTRICTED DOSSIER // VOCALOID PHONOGRAPH TRANSLATIONS <span className="text-[#C5A059]">✦</span>
+        </div>
+
         <Navbar />
-        <main className="flex-1">{children}</main>
-        <footer className="border-t border-zinc-200 py-4 text-center text-xs text-zinc-400 dark:border-zinc-800 dark:text-zinc-500">
-          Lyrics Translation — All original lyrics belong to their respective owners.
+
+        <main className="relative flex-1">{children}</main>
+
+        {/* Vintage Dossier Archival Footer */}
+        <footer className="relative mt-16 border-t border-[#C5A059]/30 bg-[#1C1A17]/80 py-8 text-center backdrop-blur-sm">
+          <div className="mx-auto flex max-w-4xl flex-col items-center justify-center gap-3 px-4">
+            <div className="flex items-center gap-3 text-[#C5A059]">
+              <span className="h-[1px] w-12 bg-[#C5A059]/40"></span>
+              <span className="rotate-45 text-xs">◆</span>
+              <span className="font-serif text-xs uppercase tracking-[0.3em] text-[#C5A059]">
+                The Archive of Echoes
+              </span>
+              <span className="rotate-45 text-xs">◆</span>
+              <span className="h-[1px] w-12 bg-[#C5A059]/40"></span>
+            </div>
+            <p className="font-mono text-xs text-[#8C8273]">
+              CLASSIFICATION: PUBLIC ACCESS // ALL ORIGINAL LYRICAL PATENTS REMAIN WITH RESPECTIVE ARTISTS
+            </p>
+            <p className="text-xs italic text-[#8C8273]/80">
+              Preserved &amp; annotated in 1960s archival broadsheet format.
+            </p>
+          </div>
         </footer>
+
         <BackToTop />
       </body>
     </html>

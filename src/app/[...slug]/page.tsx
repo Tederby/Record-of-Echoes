@@ -11,7 +11,6 @@ import SongDetail from "./SongDetail";
 import SongList from "@/app/components/SongList";
 import type { Metadata } from "next";
 
-// Only serve paths generated at build time
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
@@ -20,12 +19,10 @@ export async function generateStaticParams() {
 
   const params: { slug: string[] }[] = [];
 
-  // Artist pages (1 segment)
   for (const artist of artists) {
     params.push({ slug: [artist.slug] });
   }
 
-  // Song pages (2 or 3 segments)
   for (const song of songs) {
     params.push({ slug: song.slug });
   }
@@ -43,19 +40,19 @@ export async function generateMetadata({
   if (slug.length === 1) {
     const artistName = slug[0].replace(/_/g, " ");
     return {
-      title: `${artistName} — Lyrics Translation`,
-      description: `All translated songs by ${artistName}`,
+      title: `${artistName} // Performer Dossier — Lyrics Translation`,
+      description: `Classified lyrical archive for ${artistName}`,
     };
   }
 
   const song = getSongBySlug(slug);
   if (!song) {
-    return { title: "Not Found — Lyrics Translation" };
+    return { title: "Dossier Not Found — Lyrics Translation" };
   }
 
   return {
-    title: `${song.metadata.title} — ${song.metadata.artist} — Lyrics Translation`,
-    description: `Lyrics and translations of ${song.metadata.title} (${song.metadata.title_original ?? ""}) by ${song.metadata.artist}`,
+    title: `${song.metadata.title} — ${song.metadata.artist} // Archival Dossier`,
+    description: `Decoded lyrics and translation of ${song.metadata.title} (${song.metadata.title_original ?? ""}) by ${song.metadata.artist}`,
   };
 }
 
@@ -78,18 +75,41 @@ export default async function CatchAllPage({
       songs[0]?.metadata.artist ?? artistSlug.replace(/_/g, " ");
 
     return (
-      <div className="mx-auto max-w-4xl px-4 py-8">
-        <nav className="mb-4 text-sm text-zinc-500 dark:text-zinc-400">
-          <Link href="/" className="hover:text-zinc-700 dark:hover:text-zinc-200">Home</Link>
-          <span className="mx-2">›</span>
-          <span className="text-zinc-900 dark:text-zinc-100">{artistName}</span>
+      <div className="mx-auto max-w-5xl px-4 py-8 sm:px-6">
+        {/* Breadcrumb */}
+        <nav className="mb-6 flex items-center gap-2 font-mono text-xs tracking-wider text-[#8C8273]">
+          <Link href="/" className="transition-colors hover:text-[#C5A059]">
+            CATALOG
+          </Link>
+          <span className="text-[#C5A059]">◆</span>
+          <span className="text-[#E6DEC8]">{artistName}</span>
         </nav>
-        <h1 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-100">
-          {artistName}
-        </h1>
-        <p className="mb-4 text-sm text-zinc-500 dark:text-zinc-400">
-          {songs.length} song{songs.length !== 1 ? "s" : ""} translated
-        </p>
+
+        {/* Artist Header Dossier */}
+        <div className="relative mb-8 border border-[#C5A059]/40 bg-[#1C1A17] p-6">
+          <div className="absolute -top-1 -left-1 h-2 w-2 rotate-45 border border-[#C5A059] bg-[#141311]" />
+          <div className="absolute -top-1 -right-1 h-2 w-2 rotate-45 border border-[#C5A059] bg-[#141311]" />
+          <div className="absolute -bottom-1 -left-1 h-2 w-2 rotate-45 border border-[#C5A059] bg-[#141311]" />
+          <div className="absolute -bottom-1 -right-1 h-2 w-2 rotate-45 border border-[#C5A059] bg-[#141311]" />
+
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between border border-[#C5A059]/15 p-4 sm:p-5">
+            <div>
+              <div className="font-mono text-[10px] tracking-[0.25em] text-[#8C8273]">
+                DOSSIER REF: PERF-{artistSlug.toUpperCase()}
+              </div>
+              <h1 className="mt-1 font-serif text-3xl font-bold tracking-wide text-[#E6DEC8]">
+                {artistName}
+              </h1>
+              <p className="mt-1 font-mono text-xs text-[#C5A059]">
+                {songs.length} ARCHIVED REEL{songs.length !== 1 ? "S" : ""} DECODED
+              </p>
+            </div>
+            <div className="archive-stamp">
+              INDEXED // CONFIRMED
+            </div>
+          </div>
+        </div>
+
         <SongList songs={songs} showSearch={false} />
       </div>
     );
@@ -102,19 +122,23 @@ export default async function CatchAllPage({
   }
 
   return (
-    <div className="mx-auto max-w-4xl px-4 py-8">
-      <nav className="mb-4 text-sm text-zinc-500 dark:text-zinc-400">
-        <Link href="/" className="hover:text-zinc-700 dark:hover:text-zinc-200">Home</Link>
-        <span className="mx-2">›</span>
+    <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6">
+      {/* Breadcrumb */}
+      <nav className="mb-6 flex flex-wrap items-center gap-2 font-mono text-xs tracking-wider text-[#8C8273]">
+        <Link href="/" className="transition-colors hover:text-[#C5A059]">
+          CATALOG
+        </Link>
+        <span className="text-[#C5A059]">◆</span>
         <Link
           href={`/${song.artistSlug}`}
-          className="hover:text-zinc-700 dark:hover:text-zinc-200"
+          className="transition-colors hover:text-[#C5A059]"
         >
           {song.metadata.artist}
         </Link>
-        <span className="mx-2">›</span>
-        <span className="text-zinc-900 dark:text-zinc-100">{song.metadata.title}</span>
+        <span className="text-[#C5A059]">◆</span>
+        <span className="truncate text-[#E6DEC8]">{song.metadata.title}</span>
       </nav>
+
       <SongDetail song={song} />
     </div>
   );

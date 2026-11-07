@@ -3,9 +3,9 @@ import SongList from "./components/SongList";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Personal Lyrics Translation",
+  title: "Classified Dossier — Lyrics Translation",
   description:
-    "Personal translations of Vocaloid and J-Pop song lyrics.",
+    "Occult archival translation index of Vocaloid and Japanese lyrical compositions.",
 };
 
 export default function HomePage() {
@@ -14,39 +14,66 @@ export default function HomePage() {
   const tags = getAllTags();
 
   return (
-    <div className="mx-auto max-w-5xl px-4 py-10">
-      {/* Hero */}
-      <div className="mb-10">
-        <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 sm:text-4xl">
-          Lyrics Translation
-        </h1>
-        <p className="mt-2 text-base text-zinc-500 dark:text-zinc-400">
-          Personal translations of Vocaloid &amp; J-Pop lyrics
-        </p>
+    <div className="mx-auto max-w-5xl px-4 py-8 sm:px-6 sm:py-12">
+      {/* Broadsheet Masthead / Hero */}
+      <div className="relative mb-10 border border-[#C5A059]/30 bg-[#1C1A17] p-6 sm:p-8">
+        {/* Four corner diamonds */}
+        <div className="absolute -top-1 -left-1 h-2 w-2 rotate-45 border border-[#C5A059] bg-[#141311]" />
+        <div className="absolute -top-1 -right-1 h-2 w-2 rotate-45 border border-[#C5A059] bg-[#141311]" />
+        <div className="absolute -bottom-1 -left-1 h-2 w-2 rotate-45 border border-[#C5A059] bg-[#141311]" />
+        <div className="absolute -bottom-1 -right-1 h-2 w-2 rotate-45 border border-[#C5A059] bg-[#141311]" />
 
-        {/* Stats pills */}
-        <div className="mt-4 flex gap-3">
-          <span className="inline-flex cursor-default items-center gap-1.5 rounded-full bg-zinc-100 px-3 py-1 text-xs font-medium text-zinc-600 transition-all hover:scale-105 hover:bg-indigo-50 dark:bg-zinc-800 dark:text-zinc-400 dark:hover:bg-indigo-900/30">
-            <span className="text-sm font-bold text-indigo-600 dark:text-indigo-400">
-              {songs.length}
-            </span>
-            songs
-          </span>
-          <span className="inline-flex cursor-default items-center gap-1.5 rounded-full bg-zinc-100 px-3 py-1 text-xs font-medium text-zinc-600 transition-all hover:scale-105 hover:bg-indigo-50 dark:bg-zinc-800 dark:text-zinc-400 dark:hover:bg-indigo-900/30">
-            <span className="text-sm font-bold text-indigo-600 dark:text-indigo-400">
-              {artists.length}
-            </span>
-            artists
-          </span>
-          <span className="inline-flex cursor-default items-center gap-1.5 rounded-full bg-zinc-100 px-3 py-1 text-xs font-medium text-zinc-600 transition-all hover:scale-105 hover:bg-indigo-50 dark:bg-zinc-800 dark:text-zinc-400 dark:hover:bg-indigo-900/30">
-            <span className="text-sm font-bold text-indigo-600 dark:text-indigo-400">
-              {tags.length}
-            </span>
-            tags
-          </span>
+        {/* Inner bookplate inset border */}
+        <div className="border border-[#C5A059]/15 p-4 sm:p-6">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <div className="flex items-center gap-2 font-mono text-[10px] tracking-[0.25em] text-[#8C8273]">
+                <span className="text-[#C5A059]">✦</span>
+                <span>VOL. LXVI — CASE NO. 1999</span>
+                <span className="text-[#C5A059]">✦</span>
+              </div>
+              <h1 className="mt-2 font-serif text-3xl font-bold tracking-wide text-[#E6DEC8] sm:text-4xl md:text-5xl">
+                The <span className="italic text-[#C5A059]">Archive</span> of Echoes
+              </h1>
+              <p className="mt-2 max-w-2xl font-serif text-base italic text-[#8C8273] sm:text-lg">
+                Decoded lyrics &amp; phonographic dossiers from the depths of Japanese synthesized soundscapes.
+              </p>
+            </div>
+
+            {/* Classified Stamp */}
+            <div className="self-start sm:self-center">
+              <div className="archive-stamp">
+                DECLASSIFIED // 1999
+              </div>
+            </div>
+          </div>
+
+          {/* Archival Ledger Stats Bar */}
+          <div className="mt-6 flex flex-wrap items-center gap-3 border-t border-[#C5A059]/20 pt-4 font-mono text-xs">
+            <span className="text-[#8C8273]">DOSSIER SUMMARY:</span>
+            
+            <div className="flex items-center gap-2 border border-[#C5A059]/40 bg-[#141311] px-3 py-1 text-[#E6DEC8]">
+              <span className="text-[10px] text-[#C5A059]">◆</span>
+              <span className="font-bold text-[#C5A059]">{songs.length}</span>
+              <span className="text-[11px] text-[#8C8273]">COMPOSITIONS</span>
+            </div>
+
+            <div className="flex items-center gap-2 border border-[#C5A059]/40 bg-[#141311] px-3 py-1 text-[#E6DEC8]">
+              <span className="text-[10px] text-[#C5A059]">◆</span>
+              <span className="font-bold text-[#C5A059]">{artists.length}</span>
+              <span className="text-[11px] text-[#8C8273]">AUTHORS</span>
+            </div>
+
+            <div className="flex items-center gap-2 border border-[#C5A059]/40 bg-[#141311] px-3 py-1 text-[#E6DEC8]">
+              <span className="text-[10px] text-[#C5A059]">◆</span>
+              <span className="font-bold text-[#C5A059]">{tags.length}</span>
+              <span className="text-[11px] text-[#8C8273]">CLASSIFICATIONS</span>
+            </div>
+          </div>
         </div>
       </div>
 
+      {/* Main Song Listing */}
       <SongList songs={songs} />
     </div>
   );
