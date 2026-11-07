@@ -33,15 +33,12 @@ Translations within this repository prioritize **semantic atmosphere and emotion
 
 ## ❖ Visual Transcripts (Screenshots)
 
-<!-- User Note: Replace the placeholder image paths below with your actual screenshots -->
-
 <div align="center">
 
 ### ✦ Catalog Ledger View (Homepage)
 > *Broadsheet masthead, declassified ledger statistics, full-color phonograph cards, and dial-controlled pagination.*
 
 ![Homepage Screenshot Placeholder](docs/assets/mockup-home.png)
-*(Placeholder: Insert screenshot of the homepage broadsheet catalog)*
 
 <br />
 
@@ -49,7 +46,6 @@ Translations within this repository prioritize **semantic atmosphere and emotion
 > *Bilingual dual-manuscript comparative view, furigana ruby typography, and phonograph reel-to-reel broadcast player.*
 
 ![Lyrics Detail Screenshot Placeholder](docs/assets/mockup-lyrics.png)
-*(Placeholder: Insert screenshot of the song detail comparative lyrics)*
 
 </div>
 
