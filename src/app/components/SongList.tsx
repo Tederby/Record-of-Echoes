@@ -46,18 +46,30 @@ function normalize(str: string): string {
     .trim();
 }
 
+export type SortOption =
+  | "translated_desc"
+  | "translated_asc"
+  | "release_desc"
+  | "release_asc"
+  | "title_asc"
+  | "title_desc"
+  | "artist_asc";
+
 interface SongListProps {
   songs: Song[];
   showSearch?: boolean;
+  showSort?: boolean;
   defaultPageSize?: number;
 }
 
 export default function SongList({
   songs,
   showSearch = true,
+  showSort = true,
   defaultPageSize = 10,
 }: SongListProps) {
   const [query, setQuery] = useState("");
+  const [sortBy, setSortBy] = useState<SortOption>("translated_desc");
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(defaultPageSize);
 
@@ -75,6 +87,51 @@ export default function SongList({
     });
   }, [songs, query]);
 
+  const sorted = useMemo(() => {
+    const list = [...filtered];
+
+    list.sort((a, b) => {
+      switch (sortBy) {
+        case "translated_desc": {
+          const dateA = a.metadata.translated_date ?? "";
+          const dateB = b.metadata.translated_date ?? "";
+          return dateB.localeCompare(dateA);
+        }
+        case "translated_asc": {
+          const dateA = a.metadata.translated_date ?? "9999-99-99";
+          const dateB = b.metadata.translated_date ?? "9999-99-99";
+          return dateA.localeCompare(dateB);
+        }
+        case "release_desc": {
+          const dateA = a.metadata.release_date ?? "";
+          const dateB = b.metadata.release_date ?? "";
+          return dateB.localeCompare(dateA);
+        }
+        case "release_asc": {
+          const dateA = a.metadata.release_date ?? "9999-99-99";
+          const dateB = b.metadata.release_date ?? "9999-99-99";
+          return dateA.localeCompare(dateB);
+        }
+        case "title_asc":
+          return a.metadata.title.localeCompare(b.metadata.title, undefined, {
+            sensitivity: "base",
+          });
+        case "title_desc":
+          return b.metadata.title.localeCompare(a.metadata.title, undefined, {
+            sensitivity: "base",
+          });
+        case "artist_asc":
+          return a.metadata.artist.localeCompare(b.metadata.artist, undefined, {
+            sensitivity: "base",
+          });
+        default:
+          return 0;
+      }
+    });
+
+    return list;
+  }, [filtered, sortBy]);
+
   const handleQueryChange = (value: string) => {
     setQuery(value);
     setCurrentPage(1);
@@ -85,57 +142,115 @@ export default function SongList({
     setCurrentPage(1);
   };
 
+  const handleSortChange = (newSort: SortOption) => {
+    setSortBy(newSort);
+    setCurrentPage(1);
+  };
+
   const handlePageSizeChange = (newSize: number) => {
     setPageSize(newSize);
     setCurrentPage(1);
   };
 
-  const totalPages = Math.max(1, Math.ceil(filtered.length / pageSize));
+  const totalPages = Math.max(1, Math.ceil(sorted.length / pageSize));
   const safePage = Math.min(currentPage, totalPages);
 
-  const startIdx = filtered.length === 0 ? 0 : (safePage - 1) * pageSize + 1;
-  const endIdx = Math.min(safePage * pageSize, filtered.length);
+  const startIdx = sorted.length === 0 ? 0 : (safePage - 1) * pageSize + 1;
+  const endIdx = Math.min(safePage * pageSize, sorted.length);
 
-  const paginated = filtered.slice(
+  const paginated = sorted.slice(
     (safePage - 1) * pageSize,
     safePage * pageSize
   );
 
   return (
     <div>
-      {showSearch && (
-        <div className="mb-8">
-          <div className="relative border border-[#C5A059]/40 bg-[#1C1A17] p-1">
-            {/* Corner anchors */}
-            <div className="absolute -top-1 -left-1 h-1.5 w-1.5 rotate-45 border border-[#C5A059] bg-[#141311]" />
-            <div className="absolute -top-1 -right-1 h-1.5 w-1.5 rotate-45 border border-[#C5A059] bg-[#141311]" />
-            <div className="absolute -bottom-1 -left-1 h-1.5 w-1.5 rotate-45 border border-[#C5A059] bg-[#141311]" />
-            <div className="absolute -bottom-1 -right-1 h-1.5 w-1.5 rotate-45 border border-[#C5A059] bg-[#141311]" />
+      {(showSearch || showSort) && (
+        <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+          {showSearch && (
+            <div className="relative flex-1 border border-[#C5A059]/40 bg-[#1C1A17] p-1">
+              {/* Corner anchors */}
+              <div className="absolute -top-1 -left-1 h-1.5 w-1.5 rotate-45 border border-[#C5A059] bg-[#141311]" />
+              <div className="absolute -top-1 -right-1 h-1.5 w-1.5 rotate-45 border border-[#C5A059] bg-[#141311]" />
+              <div className="absolute -bottom-1 -left-1 h-1.5 w-1.5 rotate-45 border border-[#C5A059] bg-[#141311]" />
+              <div className="absolute -bottom-1 -right-1 h-1.5 w-1.5 rotate-45 border border-[#C5A059] bg-[#141311]" />
 
-            <div className="relative flex items-center border border-[#C5A059]/20 bg-[#141311]">
-              <Search className="pointer-events-none absolute left-3.5 h-4 w-4 text-[#C5A059]" />
-              <input
-                type="text"
-                placeholder="Search archive by title, composer, vocalist, lyrics..."
-                value={query}
-                onChange={(e) => handleQueryChange(e.target.value)}
-                className="w-full bg-transparent py-3 pl-10 pr-10 font-serif text-sm text-[#E6DEC8] placeholder-[#8C8273] focus:outline-none"
-              />
-              {query && (
-                <button
-                  onClick={handleClear}
-                  className="absolute right-3 border border-[#C5A059]/40 p-1 text-[#8C8273] transition-colors hover:border-[#C5A059] hover:text-[#C5A059]"
-                  aria-label="Clear search docket"
-                >
-                  <X className="h-3 w-3" />
-                </button>
-              )}
+              <div className="relative flex items-center border border-[#C5A059]/20 bg-[#141311]">
+                <Search className="pointer-events-none absolute left-3.5 h-4 w-4 text-[#C5A059]" />
+                <input
+                  type="text"
+                  placeholder="Search archive by title, composer, vocalist, lyrics..."
+                  value={query}
+                  onChange={(e) => handleQueryChange(e.target.value)}
+                  className="w-full bg-transparent py-2.5 pl-10 pr-10 font-serif text-sm text-[#E6DEC8] placeholder-[#8C8273] focus:outline-none"
+                />
+                {query && (
+                  <button
+                    onClick={handleClear}
+                    className="absolute right-3 border border-[#C5A059]/40 p-1 text-[#8C8273] transition-colors hover:border-[#C5A059] hover:text-[#C5A059]"
+                    aria-label="Clear search docket"
+                  >
+                    <X className="h-3 w-3" />
+                  </button>
+                )}
+              </div>
             </div>
-          </div>
+          )}
+
+          {showSort && (
+            <div
+              className={`relative border border-[#C5A059]/40 bg-[#1C1A17] p-1 shrink-0 ${
+                !showSearch ? "self-end" : ""
+              }`}
+            >
+              {/* Corner anchors */}
+              <div className="absolute -top-1 -left-1 h-1.5 w-1.5 rotate-45 border border-[#C5A059] bg-[#141311]" />
+              <div className="absolute -top-1 -right-1 h-1.5 w-1.5 rotate-45 border border-[#C5A059] bg-[#141311]" />
+              <div className="absolute -bottom-1 -left-1 h-1.5 w-1.5 rotate-45 border border-[#C5A059] bg-[#141311]" />
+              <div className="absolute -bottom-1 -right-1 h-1.5 w-1.5 rotate-45 border border-[#C5A059] bg-[#141311]" />
+
+              <div className="flex items-center gap-2 border border-[#C5A059]/20 bg-[#141311] px-3 py-2.5">
+                <label
+                  htmlFor="sort-by-select"
+                  className="font-mono text-[10px] uppercase tracking-wider text-[#C5A059] shrink-0"
+                >
+                  SORT BY:
+                </label>
+                <select
+                  id="sort-by-select"
+                  value={sortBy}
+                  onChange={(e) => handleSortChange(e.target.value as SortOption)}
+                  className="cursor-pointer bg-transparent font-mono text-xs text-[#E6DEC8] focus:outline-none"
+                >
+                  <option value="translated_desc" className="bg-[#1C1A17] text-[#E6DEC8]">
+                    Latest Translation (Newest)
+                  </option>
+                  <option value="translated_asc" className="bg-[#1C1A17] text-[#E6DEC8]">
+                    Oldest Translation
+                  </option>
+                  <option value="release_desc" className="bg-[#1C1A17] text-[#E6DEC8]">
+                    Original Release (Newest)
+                  </option>
+                  <option value="release_asc" className="bg-[#1C1A17] text-[#E6DEC8]">
+                    Original Release (Oldest)
+                  </option>
+                  <option value="title_asc" className="bg-[#1C1A17] text-[#E6DEC8]">
+                    Title (A → Z)
+                  </option>
+                  <option value="title_desc" className="bg-[#1C1A17] text-[#E6DEC8]">
+                    Title (Z → A)
+                  </option>
+                  <option value="artist_asc" className="bg-[#1C1A17] text-[#E6DEC8]">
+                    Composer / Artist (A → Z)
+                  </option>
+                </select>
+              </div>
+            </div>
+          )}
         </div>
       )}
 
-      {filtered.length === 0 ? (
+      {sorted.length === 0 ? (
         <div className="flex flex-col items-center justify-center border border-[#C5A059]/30 bg-[#1C1A17] p-12 text-center">
           <div className="mb-2 font-serif text-2xl text-[#C5A059]">❖</div>
           <p className="font-serif text-lg text-[#E6DEC8]">
@@ -160,7 +275,7 @@ export default function SongList({
               <span className="text-[#C5A059]">❖</span> RECORD{" "}
               <span className="font-bold text-[#E6DEC8]">{startIdx}</span>–
               <span className="font-bold text-[#E6DEC8]">{endIdx}</span> OF{" "}
-              <span className="font-bold text-[#E6DEC8]">{filtered.length}</span> REELS
+              <span className="font-bold text-[#E6DEC8]">{sorted.length}</span> REELS
             </div>
 
             {/* Page Navigation Buttons */}
