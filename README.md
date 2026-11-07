@@ -1,4 +1,8 @@
 <div align="center">
+  <img src="docs/assets/banner.png" alt="Records of Echoes Banner" width="100%">
+
+  <br />
+  <br />
 
 ```text
 ✦ · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ✦
