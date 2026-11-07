@@ -17,7 +17,7 @@ original_language: "ja"
 release_date: "2026-10-02"
 note: ""
 source_url: "https://www.youtube.com/watch?v=7qUq1yOjoPM"
-translated_date: ""
+translated_date: "2026-11-07"
 ---
 
 もしもし もしも...
