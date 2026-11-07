@@ -1,280 +1,247 @@
 <div align="center">
-  <img src="docs/assets/banner.png" alt="Lyrics Translation Banner" width="100%">
-  
-  <br />
-  <br />
 
-  <h1>Lyrics Translation</h1>
-  <p>
-    <b>Japanese Song Lyrics Translation Website (Vocaloid & J-Pop)</b><br/>
-    Currently focusing on Indonesian translations, but supports multi-language including English, Romaji, and more.
-  </p>
+```text
+✦ · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ✦
+  ARCHIVE REF: 1966.REV-99  //  DECLASSIFIED DOSSIER  //  DEPT. OF OCCULT LINGUISTICS
+✦ · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ✦
+```
 
-  <a href="https://nextjs.org/">
-    <img src="https://img.shields.io/badge/Next.js-16-black?style=for-the-badge&logo=next.js" alt="Next.js" />
-  </a>
-  <a href="https://tailwindcss.com/">
-    <img src="https://img.shields.io/badge/Tailwind_CSS-v4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
-  </a>
-  <a href="https://www.typescriptlang.org/">
-    <img src="https://img.shields.io/badge/TypeScript-5-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
-  </a>
-  <a href="https://vercel.com/">
-    <img src="https://img.shields.io/badge/Deployed_on-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Vercel" />
-  </a>
+# ❖ RECORDS OF ECHOES
+### *The Archive of Decoded Japanese Soundscapes*
+
+<p align="center">
+  <b>An enigmatic, mid-century occult archival index preserving decoded lyrics, translations, and phonographic records of Vocaloid and Japanese synthesized compositions.</b>
+</p>
+
+[![Next.js](https://img.shields.io/badge/Engine-Next.js_16_(Turbopack)-141311?style=for-the-badge&logo=nextdotjs&logoColor=C5A059&labelColor=1C1A17)](https://nextjs.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Aesthetic-Tailwind_v4_Art_Deco-141311?style=for-the-badge&logo=tailwindcss&logoColor=C5A059&labelColor=1C1A17)](https://tailwindcss.com/)
+[![TypeScript](https://img.shields.io/badge/Ledger-TypeScript_5-141311?style=for-the-badge&logo=typescript&logoColor=C5A059&labelColor=1C1A17)](https://www.typescriptlang.org/)
+[![Deployment](https://img.shields.io/badge/Distribution-Vercel_SSG-141311?style=for-the-badge&logo=vercel&logoColor=C5A059&labelColor=1C1A17)](https://vercel.com/)
+
+<p align="center">
+  <code>RESTRICTED ACCESS</code> // <code>DECLASSIFIED DIVISION 1999</code> // <code>PURE-CSS DOSSIER</code>
+</p>
+
 </div>
+
+---
+
+## ❖ Archival Overview
+
+**Records of Echoes** is a personal lyrics translation archive styled after 1960s British classified dossiers, occult archival ledgers, and 1920s Art Deco broadsheets (*"Reverse: 1999"* aesthetic). 
+
+Translations within this repository prioritize **semantic atmosphere and emotional resonance** over cold literal syntax. All transcripts are permanently catalogued as human-readable Markdown files directly within the repository structure, compiled at build time into an ultra-fast static web dossier without database dependencies.
+
+---
+
+## ❖ Visual Transcripts (Screenshots)
+
+<!-- User Note: Replace the placeholder image paths below with your actual screenshots -->
+
+<div align="center">
+
+### ✦ Catalog Ledger View (Homepage)
+> *Broadsheet masthead, declassified ledger statistics, full-color phonograph cards, and dial-controlled pagination.*
+
+![Homepage Screenshot Placeholder](docs/assets/screenshot-home-placeholder.png)
+*(Placeholder: Insert screenshot of the homepage broadsheet catalog)*
 
 <br />
 
-Built with Next.js (App Router). Content is stored as Markdown files inside the repository — it can be directly read and shared via GitHub.
+### ✦ Declassified Transcript View (Comparative Lyrics)
+> *Bilingual dual-manuscript comparative view, furigana ruby typography, and phonograph reel-to-reel broadcast player.*
 
----
+![Lyrics Detail Screenshot Placeholder](docs/assets/screenshot-lyrics-placeholder.png)
+*(Placeholder: Insert screenshot of the song detail comparative lyrics)*
 
-## Table of Contents
-- [Screenshots](#screenshots)
-- [Key Features](#key-features)
-- [Tech Stack](#tech-stack)
-- [Content Structure](#content-structure)
-- [Getting Started](#getting-started)
-- [Adding New Translations](#adding-new-translations)
-- [Application Routes](#application-routes)
-- [Disclaimer](#disclaimer)
-
----
-
-## Screenshots
-
-<div align="center">
-  <img src="docs/assets/mockup-home.png.jpeg" alt="Homepage" width="80%">
-  <br/>
-  <em>Homepage View (Song List & Statistics)</em>
-  <br/><br/>
-  <img src="docs/assets/mockup-lyrics.png.jpeg" alt="Side-by-Side Lyrics Mode" width="80%">
-  <br/>
-  <em>View for Lyrics Translation</em>
 </div>
 
 ---
 
-## Key Features
+## ❖ Key Capabilities & Archival Mechanics
 
-**Flexible Multi-language**
-> Dynamic language system; every `.md` file in the song folder is automatically detected as a new language (not limited to hardcoded languages).
-
-**Side-by-side Mode**
-> Compare two languages side by side with a wider screen layout.
-
-**Dropdown Language Selector**
-> Select languages via a dropdown menu (supports an unlimited number of languages).
-
-**Fuzzy Search**
-> Smart search based on title, artist, vocalist, producer, tags, and even lyrics snippets — exact matches are not required.
-
-**YouTube Embed**
-> YouTube videos are automatically embedded directly on the song page.
-
-**Markdown Rendering**
-> Lyrics are rendered as formatted markdown (bold, italic, etc).
-
-**Furigana Support**
-> Supports `{漢字|ふりがな}` syntax to display reading annotations above kanji characters.
-
-**Tags & Stats Counter**
-> Filter songs by tags (vocaloid, j-pop, ballad, etc) and view statistics for total songs, artists, and tags on the homepage.
-
-**Keyboard Shortcuts**
-> Press `1–9` to switch languages, `S` to toggle side-by-side mode.
+- **✦ Dynamic Multi-Dialect System**: Any `.md` manuscript placed inside a song docket is instantly indexed as an available dialect (Indonesian, English, Romaji, Original Japanese, etc.) without hardcoded configuration.
+- **✦ Comparative Manuscript View**: Press `[S]` to split the desk into a dual-column comparative inspection view, aligning the target translation directly against the original cipher.
+- **✦ Phonograph Broadcast Embed**: Automatic YouTube audio-visual player embedded inside an antique brass broadcast frame with reel-to-reel metadata.
+- **✦ Furigana Annotation Engine**: Custom preprocessor interpreting `{漢字|ふりがな}` markup into standard HTML `<ruby>` annotations with typography scaling.
+- **✦ Clockwork Horology Physics**: Pure-CSS 1920s Art Deco framing, rotating corner diamond nodes (`✦`), brass hairline rules, and velvety easing curves (`cubic-bezier(0.22, 1, 0.36, 1)`).
+- **✦ Multi-Token Fuzzy Search**: Real-time dossier query engine filtering by title, original Kanji, producer, lyricist, tags, or lyrical snippets.
+- **✦ Configurable Archival Pagination**: Dual-column catalog pagination with live record range counter and adjustable reel sizing (defaulting to 10 records / 5×2 grid).
+- **✦ Control Keys**: Rapid terminal navigation via number hotkeys `[1–9]` to switch dialects and `[S]` to toggle comparative view.
 
 ---
 
-## Tech Stack
+## ❖ Technical Architecture
 
-- **Framework**: Next.js 16 (App Router, TypeScript)
-- **Styling**: Tailwind CSS v4 + @tailwindcss/typography
-- **Content**: Markdown + YAML frontmatter (`gray-matter`)
-- **Markdown Rendering**: `react-markdown` + `remark-breaks` + `remark-gfm`
-- **Rendering**: Static Site Generation (SSG) via `generateStaticParams`
-- **Deploy**: Vercel
+```text
+┌─────────────────────────────────────────────────────────────┐
+│                   RECORDS OF ECHOES ENGINE                  │
+├───────────────────────┬─────────────────────────────────────┤
+│ Framework             │ Next.js 16.2 (App Router + Turbopack)│
+│ Core Language         │ TypeScript 5                        │
+│ Styling Architecture  │ Tailwind CSS v4 + Pure CSS Art Deco │
+│ Typography Engine     │ Cinzel, Cormorant Garamond, Space Mono│
+│ Content Storage       │ Markdown with YAML Frontmatter      │
+│ Parser Pipeline       │ gray-matter, react-markdown, remark │
+│ Compilation Paradigm  │ 100% Static Site Generation (SSG)   │
+│ Production Host       │ Vercel Edge Network                 │
+└───────────────────────┴─────────────────────────────────────┘
+```
 
 ---
 
-## Content Structure
+## ❖ Content Structure & Archival Ledger
 
-Lyrics are stored in the `lyrics/` folder with the following structure:
+All lyrical manuscripts reside inside the [`lyrics/`](file:///d:/18/Code/Js/lyrics-translation/lyrics) directory obeying an auditable file-tree hierarchy:
 
 ```text
 lyrics/
-  Artist_Name/
-    Album_Name/              ← optional, only if the song belongs to an album
-      Song_Title/
-        original.md          ← primary metadata source (highest priority)
-        romaji.md            ← optional
-        indonesia.md         ← optional
-        english.md           ← optional
-        [other_language].md  ← optional, automatically detected
-    Song_Title_Without_Album/
-      original.md
-      ...
+  └── Artist_Name/
+        ├── Album_Title/           [Optional: for album-specific dockets]
+        │     └── Song_Slug/
+        │           ├── original.md       ← Master docket (highest metadata priority)
+        │           ├── romaji.md         ← Transliterated phonetic script
+        │           ├── indonesia.md      ← Indonesian translation transcript
+        │           └── english.md        ← English translation transcript
+        └── Single_Song_Slug/
+              ├── original.md
+              └── [dialect].md     ← Automatically discovered dialects
 ```
 
-> **Note:** At least one `.md` file must exist in the song folder to be considered valid. Specific languages like `indonesia.md` or `english.md` are not mandatory.
+### Metadata Priority Chain
 
-### Metadata Priority
-
-Metadata (title, artist, tags, etc.) is extracted from files with the following priority:
-
-1. `original.md`
+Metadata is extracted according to strict provenance order:
+1. `original.md` *(Primary record)*
 2. `romaji.md`
 3. `indonesia.md`
 4. `english.md`
-5. Other `.md` files (alphabetical order)
+5. Other discovered dialect `.md` files (alphabetical fallback)
 
-If the highest-priority file already has metadata, the system will not fetch metadata from other files. If no metadata exists at all, the system will fallback to using the folder names as the title and artist.
+---
+
+## ❖ Manuscript Formatting Specification
 
 <details>
-<summary><b>Click to see Markdown File Format</b></summary>
-<br/>
+<summary><b>[ CLICK TO INSPECT YAML FRONTMATTER & FURIGANA MARKUP ]</b></summary>
+
+<br />
 
 ```markdown
 ---
-# === Required Fields ===
-title: "Song Title"
-artist: "Artist Name"
-tags: ["vocaloid", "melancholy", "hatsune-miku"]
+# === Required Docket Fields ===
+title: "Song Display Title"
+artist: "Producer / Circle Name"
+tags: ["vocaloid", "synthpop", "hatsune-miku"]
 
-# === Optional Fields ===
+# === Optional Archival Metadata ===
 title_original: "曲のタイトル"
 title_romaji: "Kyoku no Taitoru"
-album: "Album Name"
+album: "Anthology / Album Title"
 vocalist: "Hatsune Miku"
-producer: "Producer Name"
-lyricist: "Lyricist Name"
-arranger: "Arranger Name"
-illustrator: "MV Illustrator Name"
+producer: "Primary Composer"
+lyricist: "Poet / Lyricist"
+arranger: "Sound Arranger"
+illustrator: "MV Artist"
 original_language: "ja"
-release_date: "2024-01-01"
-translator_note: "Loose translation, not literal"
-source_url: "https://youtube.com/..."
-translated_date: "2026-07-22"
+release_date: "1966-05-14"
+translator_note: "Subjective emotional interpretation; preserves poetic cadence."
+source_url: "https://www.youtube.com/watch?v=..."
+translated_date: "2026-11-07"
 ---
 
-Lyrics content goes here, **supports markdown formatting**.
+Lyrical transcript goes here with native markdown formatting.
 
-Newlines are preserved.
-*Italic* and **bold** are rendered.
+Preserves natural verse breaks.
+*Italicized* phrases indicate whisper tracks.
 
-Furigana: {事切|ことき}れて、またね。
-```
-</details>
-
-<details>
-<summary><b>Click to see Furigana (Ruby Text) Explanation</b></summary>
-<br/>
-
-Use the `{漢字|ふりがな}` syntax to add furigana above kanji:
-
-```markdown
+Furigana reading syntax:
 {事切|ことき}れて、またね。
 {宛|あて}もなくただ{辿|たど}る{家路|いえじ}を、
 {他人事|ひとごと}のように{日々|ひび}を{眺|なが}めた。
 ```
 
-<div align="center">
-  <img src="docs/assets/furigana.png" alt="Furigana Display Example" width="60%">
-  <br/>
-  <em>Furigana Display Example</em>
-</div>
-<br/>
-
-The code above will be rendered as text with small annotations above the kanji. Browsers that do not support ruby text will display the reading text inside parentheses as a *fallback*.
-</details>
-
-<details>
-<summary><b>Click to see Full Metadata Table</b></summary>
-<br/>
-
-| Field | Status | Description |
-|---|---|---|
-| `title` | **Required** | Song title (display/translated version) |
-| `artist` | **Required** | Artist/circle name |
-| `tags` | **Required** | Array of tags for categorization |
-| `title_original` | Optional | Title in the original language (e.g. Japanese) |
-| `title_romaji` | Optional | Title in romaji (Latin transliteration) |
-| `album` | Optional | Album name |
-| `vocalist` | Optional | Vocalist name (e.g. "Hatsune Miku") |
-| `producer` | Optional | Producer/composer name |
-| `lyricist` | Optional | Lyricist (if different from producer) |
-| `arranger` | Optional | Music arranger |
-| `illustrator` | Optional | MV/cover illustrator |
-| `original_language` | Optional | Original language of the song (default: "ja") |
-| `release_date` | Optional | Song release date (YYYY-MM-DD) |
-| `translator_note` | Optional | Translator's notes |
-| `source_url` | Optional | Source URL (YouTube, NicoNico, etc.) — YouTube is auto-embedded |
-| `translated_date` | Optional | Translation date (YYYY-MM-DD) |
-
 </details>
 
 ---
 
-## Getting Started
+## ❖ Metadata Field Reference
 
-**Prerequisites:** Node.js 18+ and npm
+| Key | Integrity | Description |
+| :--- | :--- | :--- |
+| `title` | **Mandatory** | Canonical translated / display title |
+| `artist` | **Mandatory** | Main composer, author, or creative circle |
+| `tags` | **Mandatory** | Classification marks (genre, synthesizer, mood) |
+| `title_original` | Optional | Original script title (e.g. Kanji / Kana) |
+| `title_romaji` | Optional | Romanized transliteration |
+| `vocalist` | Optional | Performing vocal synthesizer or human singer |
+| `producer` | Optional | Track producer |
+| `lyricist` | Optional | Wordsmith (if distinct from producer) |
+| `arranger` | Optional | Acoustic / synthesizer arranger |
+| `illustrator` | Optional | MV animator / cover artist |
+| `album` | Optional | Parent compilation album |
+| `release_date` | Optional | Original publication date (`YYYY-MM-DD`) |
+| `translator_note` | Optional | Marginalia commentary from the translator |
+| `source_url` | Optional | YouTube master recording link (auto-embeds player) |
+| `translated_date` | Optional | Date translation was registered (`YYYY-MM-DD`) |
 
+---
+
+## ❖ Developer Protocol
+
+### Prerequisites
+- Node.js 18.x or 20.x
+- npm 9+ or pnpm
+
+### Local Initialization
 ```bash
+# Clone the classified repository
+git clone https://github.com/username/lyrics-translation.git
+
+# Enter workspace
+cd lyrics-translation
+
 # Install dependencies
 npm install
 
-# Run development server
+# Launch development environment (Turbopack enabled)
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Browse the archive at [`http://localhost:3000`](http://localhost:3000).
 
-**Build for Production:**
+### Verification & Static Compilation
 ```bash
+# Run code health and hook lint verification
+npm run lint
+
+# Generate production static dossier (SSG - 71+ routes)
 npm run build
 ```
 
 ---
 
-## Adding New Translations
+## ❖ Archival Routing Ledger
 
-1. Create a folder in `lyrics/Artist_Name/Song_Title/` (or add `Album_Name` if relevant).
-2. Create at least one `.md` file (e.g. `original.md`, `indonesia.md` or `english.md`) with YAML frontmatter format.
-3. (Optional) Add other language files — the file name will automatically become the language label on the site.
-4. Push to GitHub, and Vercel will automatically trigger a *rebuild*.
-
-### Adding New Languages
-
-Simply create a new `.md` file in the song folder with the desired language name. Our system will dynamically detect it:
-
-```text
-lyrics/Artist/Song/
-  original.md      → label: "原文"
-  romaji.md        → label: "Romaji"
-  indonesia.md     → label: "Indonesia"
-  english.md       → label: "English"
-  korean.md        → label: "Korean"     ← automatically detected!
-  spanish.md       → label: "Spanish"    ← automatically detected!
-```
+| Uniform Resource Identifier | Classification Function |
+| :--- | :--- |
+| `/` | The Archive of Echoes Catalog Ledger & Search |
+| `/artists` | Registry of Performers, Authors & Synthesizers |
+| `/tags` | Thematic Taxonomy Index & Classification Marks |
+| `/about` | Curator's Foreword, Methodology & Legal Disclaimers |
+| `/[artist]` | Specific Performer Docket Ledger |
+| `/[artist]/[song]` | Declassified Song Manuscript (Single) |
+| `/[artist]/[album]/[song]` | Declassified Song Manuscript (Album-indexed) |
+| `/tags/[tag]` | Filtered Taxonomy Query Ledger |
 
 ---
 
-## Application Routes
+## ❖ Intellectual Property & Declassified Legal Notice
 
-| Route | Description |
-|---|---|
-| `/` | Homepage — list of all songs, search filters, stats |
-| `/[artist]` | Artist page — all songs by a specific artist |
-| `/[artist]/[song]` | Song detail (without album) |
-| `/[artist]/[album]/[song]` | Song detail (with album) |
-| `/tags` | List of all tags |
-| `/tags/[tag]` | Songs with a specific tag |
-| `/artists` | List of all artists |
-| `/about` | About this site |
+All original musical scores, phonograph masters, character illustrations, and poetic verses remain the exclusive intellectual patent of their respective composers, vocaloid engineers, and publishing syndicates.
 
----
+The translations indexed within **Records of Echoes** are personal, non-commercial cultural interpretations created under educational fair-use principles. Should any rights holder or composer request the redaction or withdrawal of an archived record, formal correspondence will receive immediate compliance.
 
-## Disclaimer
-
-All original lyrics, music, and artwork belong to their respective artists, producers, and copyright holders. The translations here are personal and non-commercial, created solely for cultural appreciation and educational purposes.
+<div align="center">
+  <br />
+  <code>✦ END OF CLASSIFIED LEDGER REF: 1966.REV-99 ✦</code>
+</div>
