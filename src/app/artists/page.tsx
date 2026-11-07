@@ -11,30 +11,30 @@ export default function ArtistsPage() {
   const artists = getAllArtists();
 
   return (
-    <div className="mx-auto max-w-5xl px-4 py-8 sm:px-6 sm:py-12">
+    <div className="mx-auto max-w-5xl px-3.5 py-6 sm:px-6 sm:py-12">
       {/* Broadsheet Masthead */}
-      <div className="relative mb-10 border border-[#C5A059]/30 bg-[#1C1A17] p-6 sm:p-8">
+      <div className="relative mb-8 sm:mb-10 border border-[#C5A059]/30 bg-[#1C1A17] p-3.5 sm:p-8">
         <div className="absolute -top-1 -left-1 h-2 w-2 rotate-45 border border-[#C5A059] bg-[#141311]" />
         <div className="absolute -top-1 -right-1 h-2 w-2 rotate-45 border border-[#C5A059] bg-[#141311]" />
         <div className="absolute -bottom-1 -left-1 h-2 w-2 rotate-45 border border-[#C5A059] bg-[#141311]" />
         <div className="absolute -bottom-1 -right-1 h-2 w-2 rotate-45 border border-[#C5A059] bg-[#141311]" />
 
-        <div className="border border-[#C5A059]/15 p-4 sm:p-6">
+        <div className="border border-[#C5A059]/15 p-3.5 sm:p-6">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div>
-              <div className="font-mono text-[10px] tracking-[0.25em] text-[#8C8273]">
+              <div className="font-mono text-[9px] sm:text-[10px] tracking-[0.2em] sm:tracking-[0.25em] text-[#8C8273]">
                 INDEX LEDGER // SECTION III
               </div>
-              <h1 className="mt-2 font-serif text-3xl font-bold tracking-wide text-[#E6DEC8] sm:text-4xl">
+              <h1 className="mt-2 font-serif text-2xl xs:text-3xl font-bold tracking-wide text-[#E6DEC8] sm:text-4xl">
                 The <span className="italic text-[#C5A059]">Performers</span> &amp; Authors
               </h1>
-              <p className="mt-2 font-serif text-base italic text-[#8C8273]">
+              <p className="mt-1.5 font-serif text-sm sm:text-base italic text-[#8C8273]">
                 Registry of composers, vocaloids, synthesizers, and visual creators catalogued in the archives.
               </p>
             </div>
 
             <div className="self-start sm:self-center">
-              <div className="archive-stamp">
+              <div className="archive-stamp text-[10px] sm:text-[0.65rem]">
                 REGISTERED // {artists.length} VOICES
               </div>
             </div>
@@ -43,12 +43,12 @@ export default function ArtistsPage() {
       </div>
 
       {/* Artists Ledger Grid */}
-      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-3.5 sm:gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {artists.map((artist, idx) => (
           <Link
             key={artist.slug}
             href={`/${artist.slug}`}
-            className="group relative flex flex-col justify-between border border-[#C5A059]/40 bg-[#1C1A17] p-5 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 hover:border-[#C5A059] hover:bg-[#25221E]"
+            className="group relative flex flex-col justify-between border border-[#C5A059]/40 bg-[#1C1A17] p-4 sm:p-5 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 hover:border-[#C5A059] hover:bg-[#25221E]"
           >
             {/* 4 Corner Rotating Diamonds */}
             <div className="absolute -top-1 -left-1 h-1.5 w-1.5 rotate-45 border border-[#C5A059] bg-[#141311] transition-transform duration-500 group-hover:rotate-[135deg] group-hover:bg-[#C5A059]" />

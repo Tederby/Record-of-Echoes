@@ -100,50 +100,50 @@ export default function SongDetail({ song }: SongDetailProps) {
   const noteLanguage = targetNote ? activeLanguage : "original";
 
   return (
-    <article className="space-y-8">
+    <article className="space-y-6 sm:space-y-8">
       {/* Classified Header Dossier */}
-      <header className="relative border border-[#C5A059]/40 bg-[#1C1A17] p-6 sm:p-8">
+      <header className="relative border border-[#C5A059]/40 bg-[#1C1A17] p-3.5 sm:p-8">
         <div className="absolute -top-1 -left-1 h-2 w-2 rotate-45 border border-[#C5A059] bg-[#141311]" />
         <div className="absolute -top-1 -right-1 h-2 w-2 rotate-45 border border-[#C5A059] bg-[#141311]" />
         <div className="absolute -bottom-1 -left-1 h-2 w-2 rotate-45 border border-[#C5A059] bg-[#141311]" />
         <div className="absolute -bottom-1 -right-1 h-2 w-2 rotate-45 border border-[#C5A059] bg-[#141311]" />
 
-        <div className="border border-[#C5A059]/15 p-4 sm:p-6">
-          <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#C5A059]/20 pb-3">
-            <span className="font-mono text-[10px] tracking-[0.25em] text-[#8C8273]">
+        <div className="border border-[#C5A059]/15 p-3.5 sm:p-6">
+          <div className="flex flex-wrap items-center justify-between gap-2.5 border-b border-[#C5A059]/20 pb-3">
+            <span className="font-mono text-[9px] sm:text-[10px] tracking-[0.2em] sm:tracking-[0.25em] text-[#8C8273]">
               RESTRICTED DOSSIER // SHEET NO. 09
             </span>
-            <span className="archive-stamp">
+            <span className="archive-stamp text-[10px] sm:text-[0.65rem]">
               VERIFIED // 1999
             </span>
           </div>
 
-          <div className="mt-4">
-            <h1 className="font-serif text-3xl font-bold tracking-wide text-[#E6DEC8] sm:text-4xl">
+          <div className="mt-3.5 sm:mt-4">
+            <h1 className="font-serif text-2xl xs:text-3xl font-bold tracking-wide text-[#E6DEC8] sm:text-4xl">
               {metadata.title}
             </h1>
             {metadata.title_original && (
-              <p className="mt-1 font-serif text-xl italic text-[#C5A059]">
+              <p className="mt-1 font-serif text-lg sm:text-xl italic text-[#C5A059]">
                 {metadata.title_original}
               </p>
             )}
             {metadata.title_romaji && (
-              <p className="mt-0.5 font-mono text-xs tracking-wider text-[#8C8273]">
+              <p className="mt-0.5 font-mono text-[11px] sm:text-xs tracking-wider text-[#8C8273]">
                 [{metadata.title_romaji}]
               </p>
             )}
           </div>
 
           {/* Dossier Metadata Grid */}
-          <dl className="mt-6 grid grid-cols-2 gap-x-6 gap-y-3 border-t border-[#C5A059]/20 pt-4 font-mono text-xs sm:grid-cols-4">
+          <dl className="mt-5 sm:mt-6 grid grid-cols-2 gap-x-4 sm:gap-x-6 gap-y-3 border-t border-[#C5A059]/20 pt-3.5 sm:pt-4 font-mono text-xs sm:grid-cols-4">
             {metadataItems
               .filter((item) => item.value)
               .map((item) => (
-                <div key={item.label} className="border-l border-[#C5A059]/20 pl-2.5">
-                  <dt className="text-[10px] uppercase tracking-wider text-[#8C8273]">
+                <div key={item.label} className="border-l border-[#C5A059]/20 pl-2 sm:pl-2.5">
+                  <dt className="text-[9px] sm:text-[10px] uppercase tracking-wider text-[#8C8273]">
                     {item.label}
                   </dt>
-                  <dd className="mt-0.5 font-semibold text-[#E6DEC8]">
+                  <dd className="mt-0.5 text-xs sm:text-sm font-semibold text-[#E6DEC8] break-words">
                     {item.value}
                   </dd>
                 </div>
@@ -152,8 +152,8 @@ export default function SongDetail({ song }: SongDetailProps) {
 
           {/* Classification Tags */}
           {metadata.tags.length > 0 && (
-            <div className="mt-5 flex flex-wrap items-center gap-2 border-t border-[#C5A059]/20 pt-3">
-              <span className="font-mono text-[10px] uppercase tracking-wider text-[#8C8273]">
+            <div className="mt-4 sm:mt-5 flex flex-wrap items-center gap-1.5 sm:gap-2 border-t border-[#C5A059]/20 pt-3">
+              <span className="font-mono text-[9px] sm:text-[10px] uppercase tracking-wider text-[#8C8273]">
                 INDEX MARKS:
               </span>
               {metadata.tags.map((tag) => (
@@ -172,13 +172,13 @@ export default function SongDetail({ song }: SongDetailProps) {
       )}
 
       {/* Language Controls Bar */}
-      <div className="sticky top-[3.75rem] z-30 border border-[#C5A059]/40 bg-[#141311]/95 p-3 backdrop-blur-md">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <div className="flex flex-wrap items-center gap-3">
-            <div className="flex items-center gap-2">
+      <div className="sticky top-[3.25rem] sm:top-[3.75rem] z-30 border border-[#C5A059]/40 bg-[#141311]/95 p-2.5 sm:p-3 backdrop-blur-md">
+        <div className="flex flex-wrap items-center justify-between gap-2.5 sm:gap-3">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3 w-full sm:w-auto">
+            <div className="flex items-center gap-1.5 sm:gap-2 flex-1 sm:flex-initial">
               <label
                 htmlFor="lang-select"
-                className="font-mono text-xs uppercase tracking-wider text-[#C5A059]"
+                className="font-mono text-[10px] sm:text-xs uppercase tracking-wider text-[#C5A059] shrink-0"
               >
                 DIALECT:
               </label>
@@ -186,7 +186,7 @@ export default function SongDetail({ song }: SongDetailProps) {
                 id="lang-select"
                 value={activeLanguage}
                 onChange={(e) => handleLanguageChange(e.target.value)}
-                className="border border-[#C5A059]/40 bg-[#1C1A17] px-2.5 py-1 font-mono text-xs text-[#E6DEC8] focus:border-[#C5A059] focus:outline-none"
+                className="w-full sm:w-auto border border-[#C5A059]/40 bg-[#1C1A17] px-2 py-1 font-mono text-xs text-[#E6DEC8] focus:border-[#C5A059] focus:outline-none"
               >
                 {availableLanguages.map((lang, i) => (
                   <option key={lang} value={lang}>
@@ -199,25 +199,26 @@ export default function SongDetail({ song }: SongDetailProps) {
 
             {/* Side-by-side toggle */}
             {availableLanguages.length >= 2 && (
-              <label className="flex cursor-pointer items-center gap-2 border border-[#C5A059]/30 bg-[#1C1A17] px-2.5 py-1 font-mono text-xs text-[#E6DEC8] transition-colors hover:border-[#C5A059]">
+              <label className="flex cursor-pointer items-center gap-1.5 border border-[#C5A059]/30 bg-[#1C1A17] px-2 py-1 font-mono text-[11px] sm:text-xs text-[#E6DEC8] transition-colors hover:border-[#C5A059]">
                 <input
                   type="checkbox"
                   checked={sideBySide}
                   onChange={(e) => setSideBySide(e.target.checked)}
                   className="accent-[#C5A059]"
                 />
-                <span>COMPARATIVE VIEW [S]</span>
+                <span className="hidden sm:inline">COMPARATIVE VIEW [S]</span>
+                <span className="sm:hidden">COMPARE</span>
               </label>
             )}
 
             {/* Second language selector */}
             {sideBySide && (
-              <div className="flex items-center gap-2">
-                <span className="font-mono text-xs text-[#8C8273]">VS.</span>
+              <div className="flex items-center gap-1.5 sm:gap-2">
+                <span className="font-mono text-[10px] sm:text-xs text-[#8C8273]">VS.</span>
                 <select
                   value={secondLanguage}
                   onChange={(e) => setSecondLanguage(e.target.value)}
-                  className="border border-[#C5A059]/40 bg-[#1C1A17] px-2.5 py-1 font-mono text-xs text-[#E6DEC8] focus:border-[#C5A059] focus:outline-none"
+                  className="border border-[#C5A059]/40 bg-[#1C1A17] px-2 py-1 font-mono text-xs text-[#E6DEC8] focus:border-[#C5A059] focus:outline-none"
                 >
                   {availableLanguages
                     .filter((l) => l !== activeLanguage)
@@ -247,7 +248,7 @@ export default function SongDetail({ song }: SongDetailProps) {
             exit={{ opacity: 0, y: -6 }}
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
             aria-label="Translator Marginalia and Dossier Notes"
-            className="relative border border-[#C5A059]/40 bg-[#1C1A17] p-5 sm:p-6"
+            className="relative border border-[#C5A059]/40 bg-[#1C1A17] p-3.5 sm:p-6"
           >
             {/* 4 Corner Diamonds */}
             <div className="absolute -top-1 -left-1 h-1.5 w-1.5 rotate-45 border border-[#C5A059] bg-[#141311]" />
@@ -256,23 +257,23 @@ export default function SongDetail({ song }: SongDetailProps) {
             <div className="absolute -bottom-1 -right-1 h-1.5 w-1.5 rotate-45 border border-[#C5A059] bg-[#141311]" />
 
             {/* Inset Hairline Rule */}
-            <div className="pointer-events-none absolute inset-1.5 border border-[#C5A059]/15" />
+            <div className="pointer-events-none absolute inset-1 sm:inset-1.5 border border-[#C5A059]/15" />
 
             {/* Header Docket */}
-            <div className="mb-3.5 flex flex-wrap items-center justify-between gap-2 border-b border-[#C5A059]/20 pb-2.5">
-              <div className="flex items-center gap-2">
+            <div className="mb-3 flex flex-wrap items-center justify-between gap-2 border-b border-[#C5A059]/20 pb-2">
+              <div className="flex items-center gap-1.5 sm:gap-2">
                 <span className="text-xs text-[#C5A059]">❖</span>
-                <h3 className="font-mono text-xs font-bold uppercase tracking-widest text-[#E6DEC8]">
-                  TRANSLATOR&apos;S MARGINALIA // {getLanguageLabel(noteLanguage)}
+                <h3 className="font-mono text-[11px] sm:text-xs font-bold uppercase tracking-widest text-[#E6DEC8]">
+                  MARGINALIA // {getLanguageLabel(noteLanguage)}
                 </h3>
               </div>
-              <span className="font-mono text-[10px] tracking-widest text-[#8C8273]">
-                CLASSIFIED ARCHIVAL NOTE
+              <span className="font-mono text-[9px] sm:text-[10px] tracking-widest text-[#8C8273]">
+                ARCHIVAL NOTE
               </span>
             </div>
 
             {/* Note Content */}
-            <div className="prose prose-invert max-w-none font-serif text-sm italic text-[#E6DEC8]/95 leading-relaxed">
+            <div className="prose prose-invert max-w-none font-serif text-xs sm:text-sm italic text-[#E6DEC8]/95 leading-relaxed">
               <ReactMarkdown
                 remarkPlugins={[remarkBreaks, remarkGfm]}
                 rehypePlugins={[rehypeRaw]}
@@ -319,8 +320,8 @@ export default function SongDetail({ song }: SongDetailProps) {
         </motion.div>
       </AnimatePresence>
 
-      {/* Keyboard shortcuts footnote */}
-      <div className="border-t border-[#C5A059]/20 pt-4 font-mono text-[11px] text-[#8C8273]">
+      {/* Keyboard shortcuts footnote (desktop only) */}
+      <div className="hidden sm:block border-t border-[#C5A059]/20 pt-4 font-mono text-[11px] text-[#8C8273]">
         <span className="text-[#C5A059]">❖ CONTROL KEYS:</span> Numbers 1–
         {availableLanguages.length} switch dialect transcript // Press [S] to
         toggle comparative side-by-side view.
@@ -360,7 +361,7 @@ function LyricsPane({
 
   return (
     <div
-      className={`relative border border-[#C5A059]/40 bg-[#1C1A17] p-6 transition-colors duration-500 hover:border-[#C5A059] ${
+      className={`relative border border-[#C5A059]/40 bg-[#1C1A17] p-3.5 sm:p-6 transition-colors duration-500 hover:border-[#C5A059] ${
         expanded ? "min-h-[60vh]" : ""
       }`}
     >
@@ -371,37 +372,37 @@ function LyricsPane({
       <div className="absolute -bottom-1 -right-1 h-1.5 w-1.5 rotate-45 border border-[#C5A059] bg-[#141311]" />
 
       {/* Inset Hairline Rule */}
-      <div className="pointer-events-none absolute inset-1.5 border border-[#C5A059]/15" />
+      <div className="pointer-events-none absolute inset-1 sm:inset-1.5 border border-[#C5A059]/15" />
 
       {/* Docket Header */}
-      <div className="mb-6 flex items-center justify-between border-b border-[#C5A059]/20 pb-2.5">
-        <div className="flex items-center gap-2">
+      <div className="mb-4 sm:mb-6 flex items-center justify-between gap-2 border-b border-[#C5A059]/20 pb-2.5">
+        <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
           <span className="text-xs text-[#C5A059]">❖</span>
-          <h3 className="font-mono text-xs font-bold uppercase tracking-widest text-[#E6DEC8]">
+          <h3 className="font-mono text-[11px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest text-[#E6DEC8] truncate">
             {label} TRANSCRIPT
           </h3>
         </div>
         <button
           onClick={handleCopy}
-          className="flex items-center gap-1.5 border border-[#C5A059]/40 bg-[#141311] px-2.5 py-1 font-mono text-[10px] tracking-wider text-[#C5A059] transition-all duration-300 hover:border-[#C5A059] hover:bg-[#25221E]"
+          className="flex shrink-0 items-center gap-1.5 border border-[#C5A059]/40 bg-[#141311] px-2 sm:px-2.5 py-1 font-mono text-[10px] tracking-wider text-[#C5A059] transition-all duration-300 hover:border-[#C5A059] hover:bg-[#25221E]"
           title="Duplicate transcript to clipboard"
         >
           {copied ? (
             <>
               <Check className="h-3 w-3 text-[#7A9A80]" />
-              <span>RECORD DUPLICATED</span>
+              <span>DUPLICATED</span>
             </>
           ) : (
             <>
               <Copy className="h-3 w-3" />
-              <span>COPY TRANSCRIPT</span>
+              <span>COPY<span className="hidden xs:inline"> TRANSCRIPT</span></span>
             </>
           )}
         </button>
       </div>
 
       {/* Transcript Text */}
-      <div className="prose prose-invert max-w-none font-serif text-[#E6DEC8] leading-loose">
+      <div className="prose prose-invert max-w-none font-serif text-sm sm:text-base text-[#E6DEC8] leading-relaxed sm:leading-loose">
         <ReactMarkdown
           remarkPlugins={[remarkBreaks, remarkGfm]}
           rehypePlugins={[rehypeRaw]}

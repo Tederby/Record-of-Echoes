@@ -79,8 +79,11 @@ export default function RootLayout({
         </svg>
 
         {/* Top classified banner line */}
-        <div className="relative border-b border-[#C5A059]/20 bg-[#1C1A17] py-1 text-center font-mono text-[10px] tracking-[0.25em] text-[#8C8273]">
-          <span className="text-[#C5A059]">✦</span> ARCHIVE REF: 1966.REV-99 // RESTRICTED DOSSIER // VOCALOID PHONOGRAPH TRANSLATIONS <span className="text-[#C5A059]">✦</span>
+        <div className="relative border-b border-[#C5A059]/20 bg-[#1C1A17] px-2 py-1 text-center font-mono text-[9px] sm:text-[10px] tracking-[0.16em] sm:tracking-[0.25em] text-[#8C8273]">
+          <span className="text-[#C5A059]">✦</span>{" "}
+          <span>ARCHIVE REF: 1966.REV-99 // RESTRICTED DOSSIER</span>
+          <span className="hidden sm:inline">{" // "}VOCALOID PHONOGRAPH TRANSLATIONS</span>{" "}
+          <span className="text-[#C5A059]">✦</span>
         </div>
 
         <Navbar />
@@ -88,21 +91,21 @@ export default function RootLayout({
         <main className="relative flex-1">{children}</main>
 
         {/* Vintage Dossier Archival Footer */}
-        <footer className="relative mt-16 border-t border-[#C5A059]/30 bg-[#1C1A17]/80 py-8 text-center backdrop-blur-sm">
-          <div className="mx-auto flex max-w-4xl flex-col items-center justify-center gap-3 px-4">
-            <div className="flex items-center gap-3 text-[#C5A059]">
-              <span className="h-[1px] w-12 bg-[#C5A059]/40"></span>
-              <span className="rotate-45 text-xs">◆</span>
-              <span className="font-serif text-xs uppercase tracking-[0.3em] text-[#C5A059]">
+        <footer className="relative mt-12 sm:mt-16 border-t border-[#C5A059]/30 bg-[#1C1A17]/80 py-6 sm:py-8 text-center backdrop-blur-sm">
+          <div className="mx-auto flex max-w-4xl flex-col items-center justify-center gap-2.5 sm:gap-3 px-4">
+            <div className="flex items-center gap-2 sm:gap-3 text-[#C5A059]">
+              <span className="h-[1px] w-6 sm:w-12 bg-[#C5A059]/40"></span>
+              <span className="rotate-45 text-[10px] sm:text-xs">◆</span>
+              <span className="font-serif text-[11px] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.3em] text-[#C5A059]">
                 The Archive of Echoes
               </span>
-              <span className="rotate-45 text-xs">◆</span>
-              <span className="h-[1px] w-12 bg-[#C5A059]/40"></span>
+              <span className="rotate-45 text-[10px] sm:text-xs">◆</span>
+              <span className="h-[1px] w-6 sm:w-12 bg-[#C5A059]/40"></span>
             </div>
-            <p className="font-mono text-xs text-[#8C8273]">
+            <p className="font-mono text-[10px] sm:text-xs text-[#8C8273] leading-relaxed">
               CLASSIFICATION: PUBLIC ACCESS // ALL ORIGINAL LYRICAL PATENTS REMAIN WITH RESPECTIVE ARTISTS
             </p>
-            <p className="text-xs italic text-[#8C8273]/80">
+            <p className="text-[11px] sm:text-xs italic text-[#8C8273]/80">
               Preserved &amp; annotated in 1960s archival broadsheet format.
             </p>
           </div>

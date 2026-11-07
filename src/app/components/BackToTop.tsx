@@ -35,7 +35,7 @@ export default function BackToTop() {
           exit={{ opacity: 0, scale: 0.9 }}
           transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
           onClick={scrollToTop}
-          className="group fixed bottom-6 right-6 z-40 flex h-11 w-11 items-center justify-center border border-[#C5A059] bg-[#141311] text-[#C5A059] transition-all duration-500 hover:bg-[#25221E] hover:border-[#C5A059] focus:outline-none"
+          className="group fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center border border-[#C5A059] bg-[#141311] text-[#C5A059] transition-all duration-500 hover:bg-[#25221E] hover:border-[#C5A059] focus:outline-none active:scale-95"
           aria-label="Ascend to top of dossier"
           title="Return to top"
         >

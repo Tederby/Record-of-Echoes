@@ -75,36 +75,36 @@ export default async function CatchAllPage({
       songs[0]?.metadata.artist ?? artistSlug.replace(/_/g, " ");
 
     return (
-      <div className="mx-auto max-w-5xl px-4 py-8 sm:px-6">
+      <div className="mx-auto max-w-5xl px-3.5 py-6 sm:px-6 sm:py-8">
         {/* Breadcrumb */}
-        <nav className="mb-6 flex items-center gap-2 font-mono text-xs tracking-wider text-[#8C8273]">
+        <nav className="mb-5 sm:mb-6 flex flex-wrap items-center gap-1.5 sm:gap-2 font-mono text-[11px] sm:text-xs tracking-wider text-[#8C8273]">
           <Link href="/" className="transition-colors hover:text-[#C5A059]">
             CATALOG
           </Link>
           <span className="text-[#C5A059]">◆</span>
-          <span className="text-[#E6DEC8]">{artistName}</span>
+          <span className="text-[#E6DEC8] truncate">{artistName}</span>
         </nav>
 
         {/* Artist Header Dossier */}
-        <div className="relative mb-8 border border-[#C5A059]/40 bg-[#1C1A17] p-6">
+        <div className="relative mb-6 sm:mb-8 border border-[#C5A059]/40 bg-[#1C1A17] p-3.5 sm:p-6">
           <div className="absolute -top-1 -left-1 h-2 w-2 rotate-45 border border-[#C5A059] bg-[#141311]" />
           <div className="absolute -top-1 -right-1 h-2 w-2 rotate-45 border border-[#C5A059] bg-[#141311]" />
           <div className="absolute -bottom-1 -left-1 h-2 w-2 rotate-45 border border-[#C5A059] bg-[#141311]" />
           <div className="absolute -bottom-1 -right-1 h-2 w-2 rotate-45 border border-[#C5A059] bg-[#141311]" />
 
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between border border-[#C5A059]/15 p-4 sm:p-5">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between border border-[#C5A059]/15 p-3.5 sm:p-5">
             <div>
-              <div className="font-mono text-[10px] tracking-[0.25em] text-[#8C8273]">
+              <div className="font-mono text-[9px] sm:text-[10px] tracking-[0.2em] sm:tracking-[0.25em] text-[#8C8273]">
                 DOSSIER REF: PERF-{artistSlug.toUpperCase()}
               </div>
-              <h1 className="mt-1 font-serif text-3xl font-bold tracking-wide text-[#E6DEC8]">
+              <h1 className="mt-1 font-serif text-2xl sm:text-3xl font-bold tracking-wide text-[#E6DEC8]">
                 {artistName}
               </h1>
               <p className="mt-1 font-mono text-xs text-[#C5A059]">
                 {songs.length} ARCHIVED REEL{songs.length !== 1 ? "S" : ""} DECODED
               </p>
             </div>
-            <div className="archive-stamp">
+            <div className="self-start sm:self-center archive-stamp text-[10px] sm:text-[0.65rem]">
               INDEXED // CONFIRMED
             </div>
           </div>
@@ -122,9 +122,9 @@ export default async function CatchAllPage({
   }
 
   return (
-    <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6">
+    <div className="mx-auto max-w-4xl px-3.5 py-6 sm:px-6 sm:py-8">
       {/* Breadcrumb */}
-      <nav className="mb-6 flex flex-wrap items-center gap-2 font-mono text-xs tracking-wider text-[#8C8273]">
+      <nav className="mb-5 sm:mb-6 flex flex-wrap items-center gap-1.5 sm:gap-2 font-mono text-[11px] sm:text-xs tracking-wider text-[#8C8273]">
         <Link href="/" className="transition-colors hover:text-[#C5A059]">
           CATALOG
         </Link>
